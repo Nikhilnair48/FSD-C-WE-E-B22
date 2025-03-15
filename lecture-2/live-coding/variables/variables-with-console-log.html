@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <script>
+            
+            /*
+                Variables Demo
+                This code demonstrates different data types in JavaScript:
+                String, Number, Boolean, Undefined, and Null.
+                
+                We are using console.log() to print values to the browser's console.
+                To view the console, you need to open "Developer Tools." Steps to do so:
+                    - To view the log, right-click on the web page and select "Inspect" or "Inspect Element"
+                    - Then click on the "Console" tab.
+                    - Alternatively, press F12 (or Ctrl+Shift+I on Windows/Linux, Command+Option+I on Mac) to open Developer Tools.
+            */
+
+            // 1. STRING
+            // Declaration & assignment of a string variable
+            let username = "nikhil-nair";
+            console.log("String - username:", username);
+
+            // 2. NUMBER
+            // Example of a numeric variable
+            let distance = 120;
+            console.log("Number - distance:", distance);
+
+            // 3. NULL (initially) & then BOOLEAN
+            // We start with a null value and then change it to a boolean
+            let isWindowOpen = null;
+            console.log("Null - isWindowOpen:", isWindowOpen);
+
+            // Reassign isWindowOpen to a boolean (true)
+            isWindowOpen = true;
+            console.log("Boolean - isWindowOpen:", isWindowOpen);
+
+            // Duplicate variable naming. Why do you get the error? isWindowOpen is already delcared 
+            // Uncomment the next line to see the error
+            // let isWindowOpen = false;
+
+            // 4. UNDEFINED
+            // A variable declared without an initial value is undefined
+            let someValue;
+            console.log("Undefined - someValue:", someValue);
+
+            // 5. CONSTANTS
+            // Using const for values that should not change
+            const aadharId = "1234";
+            const person = "vimalan";
+            console.log("Aadhar ID " + aadharId + " belongs to " + person);
+
+            // Trying to change the value of a constant. Why? Constants are immutable, meaning their values cannot change
+            // Uncomment the next line to see the error
+            // aadharId = "4321";
+            
+        </script>
+    </body>
+</html>

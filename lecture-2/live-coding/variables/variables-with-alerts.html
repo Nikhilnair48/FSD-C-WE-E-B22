@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <script>
+
+            /*
+                To run a single pop up at a time, please comment out the others using //
+                Otherwise, running this file will give you eight pop ups!
+            */
+
+            // Using prompt to get a string input and storing it in a variable
+            let userName = prompt("What is your name?");
+            alert("Hello, " + userName + "!");  // String example
+
+            // Demonstrating a number with alert
+            let luckyNumber = 7;
+            alert("My lucky number is " + luckyNumber);  // Number example
+
+            // Demonstrating a boolean value with alert
+            let isLearning = true;
+            alert("Am I learning JavaScript? " + isLearning);
+
+            // Demonstrating an undefined variable with alert
+            // Why's it undefined? Because the variable has not been assigned a value
+            let notDefined;
+            alert("This variable is undefined: " + notDefined);
+
+            // Demonstrating a variable that's assigned a null value with alert
+            let emptyValue = null;
+            alert("This variable is null: " + emptyValue);
+
+            // **Casting Example:**  
+            // Prompt for a number (input as string) and cast it to Number
+            let numInput = prompt("Enter a number:");
+            let num = Number(numInput);
+            alert("You entered the number: " + num);
+        </script>
+    </body>
+</html>

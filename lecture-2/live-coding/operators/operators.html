@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <script>
+            /*
+                Operators Demo
+                This code demonstrates the operators covered in Lecture 2:
+                - Arithmetic Operators
+                    - Addition (+)
+                    - Subtraction (-)
+                    - Multiplication (*)
+                    - Division (/)
+                    - Modulus (%) - remainder from a division
+
+                We use console.log() to print results to the browser's console.
+                To view the console:
+                    - Right-click on the page and select "Inspect" or "Inspect Element".
+                    - Click on the "Console" tab.
+                    - Alternatively, press F12 (or Ctrl+Shift+I on Windows/Linux, Command+Option+I on Mac).
+            */
+
+            // Define two numbers for demonstration
+            let num1 = 50;
+            let num2 = 40;
+
+            // --- ARITHMETIC OPERATORS ---
+
+            // Addition (+)
+            let sum = num1 + num2;    // 50 + 40 = 90
+            console.log("Sum:", sum);
+
+            // Subtraction (-)
+            let sub = num1 - num2;    // 50 - 40 = 10
+            console.log("Difference:", sub);
+
+            // Multiplication (*)
+            let mul = num1 * num2;    // 50 * 40 = 2000
+            console.log("Product:", mul);
+
+            // Division (/)
+            let div = num1 / num2;    // 50 / 40 = 1.25
+            console.log("Quotient:", div);
+
+            // Modulus (%)
+            // Returns the remainder of 50 divided by 40 (which is 10)
+            let mod = num1 % num2;
+            console.log("Remainder:", mod);
+
+
+            // Equality (==) - performs type conversion if necessary.
+            console.log("Equality (5 == '5'):", 5 == "5");  // true, because "5" is converted to 5
+
+            // Strict Equality (===) - no type conversion, checks both value and type.
+            console.log("Strict Equality (5 === '5'):", 5 === "5");  // false, because number and string are different
+
+            // Inequality (!=) - performs type conversion.
+            console.log("Inequality (5 != '5'):", 5 != "5");  // false, because after type conversion they are equal
+
+            // Strict Inequality (!==) - no type conversion.
+            console.log("Strict Inequality (5 !== '5'):", 5 !== "5");  // true, because types are different
+
+            // Greater Than (>)
+            console.log("Greater Than (num1 > num2):", num1 > num2);  // true because 50 > 40
+
+            // Less Than (<)
+            console.log("Less Than (num1 < num2):", num1 < num2);  // false because 50 is not less than 40
+
+            // Greater Than or Equal (>=)
+            console.log("Greater Than or Equal (num1 >= num2):", num1 >= num2);  // true
+
+            // Less Than or Equal (<=)
+            console.log("Less Than or Equal (num1 <= num2):", num1 <= num2);  // false
+
+        </script>
+    </body>
+</html>

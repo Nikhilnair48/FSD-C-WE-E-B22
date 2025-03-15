@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <script>
+            /*
+                Operators Demo
+                
+                This code demonstrates the operators covered in Lecture 2:
+                 - Logical Operators (Using Boolean Variables)
+
+                In JavaScript, logical operators work naturally with boolean values:
+                
+                - AND (&&): Returns true only if both operands are true.
+                - OR (||): Returns true if at least one operand is true.
+                - NOT (!): Inverts the boolean value.
+
+                We use console.log() to print results to the browser's console.
+                To view the console:
+                    - Right-click on the page and select "Inspect" or "Inspect Element".
+                    - Click on the "Console" tab.
+                    - Alternatively, press F12 (or Ctrl+Shift+I on Windows/Linux, Command+Option+I on Mac).
+            */
+
+            // Define boolean variables
+            let boolA = true;
+            let boolB = false;
+
+            // AND (&&) Operator:
+            // true && false evaluates to false because both values are not true.
+            let andResult = boolA && boolB;
+            console.log("Logical AND (true && false):", andResult);  // Expected output: false
+
+            // OR (||) Operator:
+            // true || false evaluates to true because at least one value is true.
+            let orResult = boolA || boolB;
+            console.log("Logical OR (true || false):", orResult);     // Expected output: true
+
+            // NOT (!) Operator:
+            // !true inverts true to false.
+            let notResult = !boolA;
+            console.log("Logical NOT (!true):", notResult);           // Expected output: false
+
+            // Additional Examples:
+
+            // Both values are true: true && true results in true.
+            let bothTrue = true && true;
+            console.log("Logical AND (true && true):", bothTrue);     // Expected output: true
+
+            // Both values are false: false || false results in false.
+            let bothFalse = false || false;
+            console.log("Logical OR (false || false):", bothFalse);     // Expected output: false
+
+        </script>
+    </body>
+</html>
