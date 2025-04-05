@@ -1,0 +1,30 @@
+.product-card {
+    border: 1px solid #ccc;
+    padding: 15px;
+    margin-bottom: 10px;
+    width: 300px;
+  }
+
+  #product-title {
+    color: #333;
+  }
+
+  .price {
+    color: green;
+    font-weight: bold;
+    display: inline-block;
+    margin-right: 10px; /* Add some space between price and button */
+  }
+
+  .description {
+    color: #666;
+  }
+
+  .add-to-cart {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    cursor: pointer;
+    display: inline-block;
+  }

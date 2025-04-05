@@ -1,0 +1,15 @@
+.card {
+    border: 1px solid black;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .important {
+    font-weight: bold;
+    color: red;
+  }
+  
+  .highlight {
+    background-color: yellow;
+  }
+  

@@ -1,0 +1,8 @@
+span {
+  display: inline;
+  border: 1px solid purple;
+}
+a {
+  display: inline;
+  border: 1px solid brown;
+}

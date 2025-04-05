@@ -1,0 +1,11 @@
+* {
+ padding: 0; 
+ margin: 0;
+}
+
+div {
+  display: block;
+}
+p {
+  display: block;
+}
