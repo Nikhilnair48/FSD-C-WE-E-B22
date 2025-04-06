@@ -1,0 +1,70 @@
+/* style.css */
+body {
+    font-family: sans-serif;
+    margin: 20px;
+    background-color: #f4f4f4;
+}
+
+header {
+    background-image: linear-gradient(to right, #333, #555);
+    color: white;
+    padding: 30px;
+    text-align: center;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.content-area { /* NEW STYLES FOR THE CONTAINER */
+    display: flex;
+    gap: 20px; /* Optional: Add some gap between main and aside */
+}
+
+main {
+    padding: 20px;
+    margin-bottom: 30px;
+    background-color: #fff;
+    color: #333;
+    flex: 3; /* Take up the majority of the space */
+    margin-right: 0; /* REMOVE the fixed right margin */
+}
+
+aside {
+    padding: 15px;
+    width: 200px;
+    background-image: radial-gradient(circle, #ffffff, #c5c6d0);
+    color: #333;
+    position: relative;
+    left: 20px;
+    flex: 1; /* Take up a smaller portion of the space */
+    float: none; /* REMOVE the float */
+}
+
+footer {
+    background-image: linear-gradient(to top, #222, #444);
+    color: #eee;
+    text-align: center;
+    padding: 10px;
+    clear: both; /* Keep this for now, might not be strictly necessary with flexbox */
+    margin-top: 20px;
+}
+
+header button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 8px 12px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 0.9em;
+}
+
+aside h3 {
+    position: sticky;
+    top: 0;
+    background-color: #eef;
+    padding: 10px;
+    margin-top: 0;
+    margin-bottom: 10px;
+}

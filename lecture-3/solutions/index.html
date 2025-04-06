@@ -5,13 +5,52 @@
     </head>
     <body>
         <script>
-            let birthYear = prompt("Enter your birth year:"));
-            const currentYear = 2025;
-            let age = currentYear - Number(birthYear);
-            let hundredYear = birthYear + 100;
+            // declaring variables using "let"
+            // declaring variables using "const" -- constant : cannot change value
+            // immutable - cannot change the value
 
-            alert("You are " + age + " years old.");
-            alert("You will turn 100 in the year " + hundredYear + ".");
+            // let pi = 3.14;
+            // pi = 3.1415;
+
+
+            // let myVar; // Currently undefined
+            // alert("myVar is " + myVar);
+
+            // myVar = null; // Explicitly set to null
+            // alert("myVar is now " + myVar);
+
+            // declare a variable, favoriteFood. 
+            // Give it a value - string - your favorite food
+            // alert as "My favorite food is __"
+            // let favoriteFood = "pizza";
+            // alert("My favorite food is " + favoriteFood)
+
+            let x = 10;
+            let y = 5;
+
+            let addition = x + y;
+            let subtraction = x - y;
+            let division = x / y;
+            let multiplication = x * y;
+            let modulo = x % y;
+
+            let isStudent = true;
+            let isMember = false;
+
+            let orValue = isStudent || isMember;   // true OR false -> true
+            let andValue = isStudent && isMember;   // true AND false -> false
+            isStudent = !isStudent;
+
+            let areNamesEqual = "Nikhil" == "Kashish"; // false
+            let areNumbersEqual = "3" === 3;    // false
+            let areNumbersEqualTwo = "3" == 3;    // true
+
+            
+
+
+
+
+
         </script>
     </body>
 </html>

@@ -21,6 +21,7 @@ aside {
     float: right;
     width: 200px; /* Setting a width for the sidebar */
     background-color: #eee;
+    margin-bottom: 10px;
 }
 
 footer {

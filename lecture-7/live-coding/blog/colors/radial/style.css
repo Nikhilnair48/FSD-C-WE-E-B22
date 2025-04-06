@@ -1,0 +1,62 @@
+body {
+    font-family: sans-serif;
+    margin: 20px; /* Adding some margin around the entire body */
+    background-color: #f4f4f4; /* Adding a light gray background to the body */
+}
+
+header {
+    background-image: linear-gradient(to right, #333, #555); /* Adding a linear gradient to the header */
+    color: white; /* White text color for the header */
+    padding: 30px; /* Adding 30px padding to all sides of the header */
+    text-align: center;
+    margin-bottom: 20px; /* Adding margin below the header */
+    position: relative; /* Making the header a positioned ancestor */
+}
+
+main {
+    padding: 20px;
+    margin-right: 220px; /* Adjusting right margin for sidebar */
+    margin-bottom: 30px; /* Adding margin below the main content */
+    background-color: #fff; /* White background for the main content */
+    color: #333; /* Dark text color for the main content */
+}
+
+aside {
+    padding: 15px;
+    float: right;
+    width: 200px; /* Setting a width for the sidebar */
+    background-image: radial-gradient(circle, #ffffff, #c5c6d0); /* Adding a radial gradient to the sidebar */
+    color: #333; /* Dark text color for the sidebar */
+    position: relative; /* Setting position to relative */
+    left: 20px; /* Moving the sidebar 20px to the right */
+}
+
+footer {
+    background-image: linear-gradient(to top, #222, #444); /* Adding a linear gradient to the footer */
+    color: #eee; /* Lighter text color for the footer */
+    text-align: center;
+    padding: 10px;
+    clear: both; /* Clearing the float */
+    margin-top: 20px; /* Adding margin above the footer */
+}
+
+header button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 8px 12px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 0.9em;
+}
+
+aside h3 {
+    position: sticky;
+    top: 0;
+    background-color: #eef; /* Add a background color for better visibility when sticky */
+    padding: 10px;
+    margin-top: 0; /* Reset default heading top margin */
+    margin-bottom: 10px; /* Add some bottom margin */
+}
