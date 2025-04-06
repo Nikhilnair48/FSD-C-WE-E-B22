@@ -1,0 +1,67 @@
+body {
+    font-family: sans-serif;
+    margin: 20px;
+}
+
+header {
+    background-color: #f0f0f0;
+    padding: 30px;
+    text-align: center;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+main {
+    /* ADDED position, border and padding FOR EXPERCISE */
+    position: relative;
+    border: 2px solid gray;
+    padding: 10px;
+    margin-right: 220px;
+    margin-bottom: 30px;
+}
+
+aside {
+    padding: 15px;
+    float: right;
+    width: 200px;
+    background-color: #eee;
+    position: relative;
+    left: 20px;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    clear: both;
+    margin-top: 20px;
+}
+
+header button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 8px 12px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 0.9em;
+}
+
+aside h3 {
+    position: sticky;
+    top: 0;
+    background-color: #eef; /* Add a background color for better visibility when sticky */
+    padding: 10px;
+    margin-top: 0; /* Reset default heading top margin */
+    margin-bottom: 10px; /* Add some bottom margin */
+}
+
+/* ADDED important-note ID selector */
+#important-note {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
