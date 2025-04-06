@@ -18,16 +18,25 @@
    - Use display, position and colors accordingly
 - **Bonus**: Use a linear or radial gradient for the background of the body or the header of the blog
 
+Blogs for inspiration:
+ - [Blog 1](https://cupcakesandcashmere.com/diy/turning-digital-photos-into-prints)
+ - [Blog 2](https://cupofjo.com/2025/03/28/have-a-lovely-weekend-54/)
+ - [Blog 3](https://designformankind.com/2024/12/a-goal-for-2025-or-forever/)
+
+
 2. Youtube video preview
 - Create a simple Youtube video preview. You can pick any video of your choice.
 - The video preview should display the following:
    - video thumbnail: use `img` tag, `src` & `alt` attribute & don't forget to set `width`/`height` for your image!
+   - Video description
    - channel name
    - total views
    - duration of the video
    - when it was uploaded (eg: 1 day ago, 1 week ago, 1 year go)
 - Style the card with a border, some padding around the content, and a background color of your choice
 - **Bonus**: When the preview is clicked, redirect the user to the actual Youtube video. Your entire video preview should be clickable.
+
+[Reference link for youtube video preview](https://github.com/Nikhilnair48/FSD-C-WE-E-B22/blob/main/lecture-7/homework/youtube-video-thumbnail-reference.png)
 
 3. Sticky Navigation Header
  - Create a `header` element for a webpage
