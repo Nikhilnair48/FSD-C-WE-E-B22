@@ -21,11 +21,11 @@
 2. Youtube video preview
 - Create a simple Youtube video preview. You can pick any video of your choice.
 - The video preview should display the following:
- - video thumbnail: use `img` tag, `src` & `alt` attribute & don't forget to set `width`/`height` for your image!
- - channel name
- - total views
- - duration of the video
- - when it was uploaded (eg: 1 day ago, 1 week ago, 1 year go)
+   - video thumbnail: use `img` tag, `src` & `alt` attribute & don't forget to set `width`/`height` for your image!
+   - channel name
+   - total views
+   - duration of the video
+   - when it was uploaded (eg: 1 day ago, 1 week ago, 1 year go)
 - Style the card with a border, some padding around the content, and a background color of your choice
 - **Bonus**: When the preview is clicked, redirect the user to the actual Youtube video. Your entire video preview should be clickable.
 
@@ -33,8 +33,8 @@
  - Create a `header` element for a webpage
  - Inside the `header`, add a placeholder for a website logo (`div` or `img`) and a ([`nav` element with a few links](https://www.w3schools.com/TAgs/tag_nav.asp)).
  - Use CSS to make the header stick to the top of the browser window when the user scrolls:
-  - Set the `position` property to `fixed`.
-  - Set the `top` property to `0` or a valid integer (`10px`).
-  - Ensure it spans the full width of the page.
-  - Give it a background color.
-  - Consider using ([`z-index`](https://www.w3schools.com/cssref/pr_pos_z-index.php)) if required.
+    - Set the `position` property to `fixed`.
+    - Set the `top` property to `0` or a valid integer (`10px`).
+    - Ensure it spans the full width of the page.
+    - Give it a background color.
+    - Consider using ([`z-index`](https://www.w3schools.com/cssref/pr_pos_z-index.php)) if required.
