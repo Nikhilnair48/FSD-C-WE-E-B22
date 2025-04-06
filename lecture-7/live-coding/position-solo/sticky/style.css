@@ -1,0 +1,62 @@
+/* style.css */
+body {
+    background-color: #f0f0f0;
+}
+
+.container {
+    background-color: #73AD21;
+    border: solid 3px blue;
+    width: 300px;
+    margin: 50px auto;
+    overflow-y: scroll;
+    height: 400px;
+    padding-top: 20px; /* Add some padding to see sticky behavior */
+}
+
+.box {
+    width: 200px;
+    height: 100px;
+    color: white;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.box1 {
+    background-color: white;
+    color: black;
+}
+
+.box2 {
+    background-color: yellow;
+    color: black;
+}
+
+.box3 {
+    background-color: white;
+    color: black;
+}
+
+.box4 {
+    background-color: lightblue;
+    color: black;
+}
+
+.box5 {
+    background-color: white;
+    color: black;
+}
+
+.box6 {
+    background-color: lightcoral;
+    color: black;
+}
+
+.sticky {
+    position: sticky;
+    top: 20px;
+    background-color: rgba(255, 255, 0, 0.8); /* Adding some transparency */
+    z-index: 1; /* To ensure it stays on top */
+}

@@ -1,0 +1,46 @@
+/* style.css */
+body {
+    background-color: #f0f0f0;
+}
+
+.container {
+    background-color: #73AD21;
+    border: solid 3px blue;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 500px;
+    position: relative; /* Containing block for absolute positioning */
+}
+
+.box {
+    width: 200px;
+    height: 100px;
+    color: white;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
+}
+
+.box1 {
+    background-color: white;
+    color: black;
+}
+
+.box2 {
+    background-color: yellow;
+    color: black;
+}
+
+.box3 {
+    background-color: white;
+    color: black;
+}
+
+.absolute {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
