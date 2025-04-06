@@ -1,0 +1,26 @@
+header {
+    background-color: #f0f0f0;
+    padding: 20px;
+}
+main {
+    padding: 15px;
+    margin-bottom: 20px;
+   /* Adding margin below the main content */
+    margin-right: 200px;
+   /* Adding right margin to make space for the sidebar */
+}
+aside {
+    padding: 10px;
+    width: 180px;
+   /* Setting a width for the sidebar */
+    float: right;
+   /* Floating the sidebar to the right */
+}
+footer {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    clear: both;
+   /* Clearing the float */
+}

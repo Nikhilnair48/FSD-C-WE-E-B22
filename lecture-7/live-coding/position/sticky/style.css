@@ -1,0 +1,57 @@
+body {
+    font-family: sans-serif;
+    margin: 20px; /* Adding some margin around the entire body */
+}
+
+header {
+    background-color: #f0f0f0;
+    padding: 30px; /* Adding 30px padding to all sides of the header */
+    text-align: center;
+    margin-bottom: 20px; /* Adding margin below the header */
+    position: relative; /* Making the header a positioned ancestor */
+}
+
+main {
+    padding: 20px;
+    margin-right: 220px; /* Adjusting right margin for sidebar */
+    margin-bottom: 30px; /* Adding margin below the main content */
+}
+
+aside {
+    padding: 15px;
+    float: right;
+    width: 200px; /* Setting a width for the sidebar */
+    background-color: #eee;
+    position: relative; /* Setting position to relative */
+    left: 20px; /* Moving the sidebar 20px to the right */
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    clear: both; /* Clearing the float */
+    margin-top: 20px; /* Adding margin above the footer */
+}
+
+header button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 8px 12px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 0.9em;
+}
+
+aside h3 {
+    position: sticky;
+    top: 0;
+    background-color: #eef; /* Add a background color for better visibility when sticky */
+    padding: 10px;
+    margin-top: 0; /* Reset default heading top margin */
+    margin-bottom: 10px; /* Add some bottom margin */
+}
