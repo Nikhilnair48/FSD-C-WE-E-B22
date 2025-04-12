@@ -1,0 +1,48 @@
+<!-- 
+    Challenge: Laying out multiple items with predetermined fixed sizes and floats often meant the design wouldn’t adapt well to various screen sizes
+-->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Rigid Sizing Example</title>
+    <style>
+        .container {
+            /* what if we increase the width to 800? */
+            width: 900px;
+            /* 
+             - Fixed container width - makes a rigid layout
+             - adapting to smaller or larger viewports requires additional CSS
+            */
+            margin: 20px auto;
+            background: #f0f0f0;
+            padding: 10px;
+            overflow: hidden;
+            /* Clear floated children */
+            border: 1px solid #ccc;
+        }
+
+        .box {
+            float: left;
+            width: 190px;
+            /* Hard-coded width */
+            margin: 5px;
+            background: #ccc;
+            text-align: center;
+            padding: 10px;
+            box-sizing: border-box;
+            /* Manage padding without breaking width */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="box">Box 1</div>
+        <div class="box">Box 2</div>
+        <div class="box">Box 3</div>
+    </div>
+</body>
+
+</html>

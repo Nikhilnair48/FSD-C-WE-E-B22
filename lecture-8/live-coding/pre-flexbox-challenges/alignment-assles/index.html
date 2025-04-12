@@ -1,0 +1,43 @@
+<!-- 
+    Challenge: Centering an element both vertically and horizontally required workarounds such as absolute positioning with negative margins
+-->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Alignment Hassles Example</title>
+    <style>
+        .container {
+            position: relative;
+            width: 400px;
+            height: 200px;
+            /* margin top and margin bottom is 20px; margin left and margin right is automatic */
+            margin: 20px auto;
+            background: #f0f0f0;
+            border: 1px solid #ccc;
+        }
+
+        .centered {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 150px;
+            height: 50px;
+            background: #ccc;
+            text-align: center;
+            line-height: 50px;
+            /* Negative margins equal to half of element's height and width */
+            margin-top: -25px;
+            margin-left: -75px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="centered">Centered Content</div>
+    </div>
+</body>
+
+</html>

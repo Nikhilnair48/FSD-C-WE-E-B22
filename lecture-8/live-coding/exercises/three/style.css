@@ -1,0 +1,115 @@
+body {
+    font-family: sans-serif;
+    margin: 0;
+}
+
+header {
+    background-color: #f0f0f0;
+    padding: 20px;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+}
+
+
+.nav-links li {
+    margin-right: 20px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: brown;
+}
+
+.nav-links a:hover {
+    color: black;
+}
+
+.hero img {
+    width: 100%;
+    max-height: 400px;
+    object-fit: cover;
+}
+
+.menu {
+    padding: 20px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.menu-category {
+    margin-bottom: 30px;
+    flex-basis: calc(50% - 20px);
+}
+
+.menu-items {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.menu-item {
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    flex-basis: calc(50% - 10px);
+    /* Adjust as needed */
+}
+
+.menu-item h3 {
+    margin-top: 0;
+}
+
+.price {
+    font-weight: bold;
+    color: #8B0000;
+}
+
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #333;
+    color: white;
+}
+
+/* Media Queries for Responsiveness */
+@media screen and (max-width: 768px) {
+    .menu {
+        /* Stack categories vertically on mobile */
+        flex-direction: column;
+    }
+
+    .menu-category {
+        /* Take full width on mobile */
+        flex-basis: 100%;
+    }
+
+    .menu-item {
+        /* Full width for menu items too */
+        flex-basis: 100%;
+    }
+
+    .nav-links {
+        /* Hide nav links on mobile (for simplicity) */
+        display: none;
+    }
+
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+.hero img {
+    max-height: 200px;
+}
+}

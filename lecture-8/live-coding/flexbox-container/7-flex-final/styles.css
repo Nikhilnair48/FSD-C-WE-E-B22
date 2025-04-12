@@ -1,0 +1,101 @@
+/* =========================
+   BASE STYLES
+   ========================= */
+
+:root {
+  --clr-dark: #0f172a;
+  --clr-light: #f1f5f9;
+  --clr-accent: #e11d48;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+  word-spacing: 1.4px;
+  font-family: "Roboto", sans-serif;
+  color: var(--clr-dark);
+  background-color: var(--clr-light);
+
+  /* Center the container in the viewport */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* =========================
+     FLEX CONTAINER
+     ========================= */
+
+.container {
+  /* Make this a flex container and enable multi-line wrapping */
+  display: flex;
+  flex-flow: row wrap;
+  /* Shorthand for 'flex-direction: row' + 'flex-wrap: wrap' */
+
+  /* Set a smaller fixed height so we can demonstrate overflow behavior */
+  width: 80%;
+  height: 400px;
+  margin: 0 auto;
+  border: 10px solid var(--clr-dark);
+
+  /* Manage vertical overflow when items exceed 400px height */
+  overflow-y: auto;
+
+  /* Space between flex items on all rows */
+  gap: 1rem;
+
+  /*
+     * align-content only works when flex-wrap is enabled and there are
+     * multiple lines of items. We use "space-evenly" or "center" to see how
+     * lines in the cross axis are spaced.
+     */
+  align-content: center;
+
+  /*
+     * justify-content aligns items in the main axis. We start them
+     * at the left to demonstrate how auto margins can push an item to the right.
+     */
+  justify-content: flex-start;
+}
+
+/* =========================
+     FLEX ITEMS
+     ========================= */
+
+.item {
+  flex: 1 0 150px;
+  /* flex-grow:1, flex-shrink:0, flex-basis:150px */
+  height: 150px;
+  background-color: #fb7185;
+  padding: 1em;
+  font-weight: 700;
+  color: var(--clr-light);
+  text-align: center;
+  border: 10px solid var(--clr-accent);
+  border-radius: 10px;
+
+  /* Demonstrates that each item can still wrap below if needed */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Demonstrate how auto margins can push an item to the far right */
+.push-right {
+  margin-left: auto;
+}
+
+/* Uncomment to see how Item 1 grows twice as much as others in leftover space */
+/*
+  .item:nth-child(1) {
+    flex: 2;
+  }
+  */

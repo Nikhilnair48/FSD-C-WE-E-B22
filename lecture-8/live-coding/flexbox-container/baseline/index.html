@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Align Items Baseline Example</title>
+    <style>
+        .container {
+            display: flex;
+            align-items: baseline;
+            /* Align elements based on text baseline */
+            gap: 10px;
+            border: 2px solid black;
+            padding: 10px;
+        }
+
+        .item {
+            font-size: 16px;
+            border: 1px solid gray;
+            padding: 5px;
+        }
+
+        .item.large {
+            font-size: 32px;
+            /* Different font size */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="item">Small text</div>
+        <div class="item large">Larger text</div>
+        <div class="item">Regular text</div>
+    </div>
+</body>
+
+</html>

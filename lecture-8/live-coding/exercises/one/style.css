@@ -1,0 +1,64 @@
+body {
+    font-family: sans-serif;
+    margin: 0;
+}
+
+header {
+    background-color: #f0f0f0;
+    padding: 20px;
+}
+
+nav {}
+
+.nav-links {
+    list-style: none;
+}
+
+.nav-links li {
+    margin-right: 20px;
+}
+
+.hero img {
+    width: 100%;
+    max-height: 300px;
+    object-fit: cover;
+}
+
+.menu {
+    padding: 20px;
+}
+
+.menu-category {
+    margin-bottom: 30px;
+}
+
+.menu-items {
+    /* turns each menu-item into a flex container */
+    display: flex;
+    /* arranges the items in a row */
+    flex-direction: row;
+}
+
+.menu-item {
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    /* Makes each item take up roughly 50% of the container width, minus a small amount for spacing. */
+    flex-basis: calc(50% - 10px);
+}
+
+.menu-item h3 {
+    margin-top: 0;
+}
+
+.price {
+    font-weight: bold;
+    color: #8B0000;
+}
+
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #333;
+    color: white;
+}

@@ -1,0 +1,84 @@
+< !DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>CSS Media Queries Example</title><style>
+
+/* Base styles for all devices */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background: #f0f0f0;
+    color: #333;
+}
+
+h1 {
+    text-align: center;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    /* Default: side-by-side boxes */
+    background: #fff;
+    padding: 20px;
+    border: 1px solid #ddd;
+    margin-top: 20px;
+}
+
+.box {
+    flex: 1;
+    margin: 10px;
+    padding: 20px;
+    background: #e8f4f8;
+    text-align: center;
+    border: 1px solid #ccc;
+}
+
+/* Responsive adjustment for smaller screens */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        /* Stack boxes vertically */
+    }
+
+    .box {
+        margin: 10px 0;
+        /* Adjust margin for vertical stacking */
+    }
+}
+
+/* High resolution screens (e.g., Retina displays) */
+@media only screen and (-webkit-min-device-pixel-ratio: 2),
+only screen and (min-resolution: 192dpi) {
+    .box {
+        border-width: 2px;
+        /* Thicker borders on high-res screens */
+    }
+}
+
+/* Print styles */
+@media print {
+    body {
+        background: none;
+        /* Remove background colors for print */
+        color: black;
+    }
+
+    .container {
+        border: none;
+        padding: 0;
+    }
+
+    .box {
+        background: white;
+        border: 1px solid #000;
+        /* Clearer borders for print */
+        page-break-inside: avoid;
+        /* Prevent boxes from breaking across pages */
+    }
+
+    h1 {
+        text-align: left;
+        /* Adjust header alignment for print */
+    }
+}
+
+</style></head><body><h1>CSS Media Queries Example</h1><div class="container"><div class="box"><h2>Box 1</h2><p>This box is part of a responsive layout that changes from horizontal to vertical on smaller screens.</p></div><div class="box"><h2>Box 2</h2><p>It also adapts for high-resolution displays and print contexts using media queries.</p></div></div></body></html>
