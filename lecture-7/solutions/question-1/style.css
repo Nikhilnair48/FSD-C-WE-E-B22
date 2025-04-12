@@ -1,0 +1,39 @@
+body {
+  background-color: #f2f2f2;
+  font-family: Arial, sans-serif;
+}
+
+.business-card {
+  width: 300px;
+  padding: 20px;
+  margin: 50px auto;
+  background: #fff;
+  border-radius: 8px;
+}
+
+.card-header {
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.card-header h1 {
+  margin: 0;
+  font-size: 24px;
+  color: #333;
+}
+
+.card-header p {
+  margin: 5px 0;
+  color: #777;
+}
+
+.card-contact p {
+  margin: 10px 0;
+  font-size: 14px;
+  color: #555;
+}
+
+.card-contact p:hover {
+  color: #000;
+}
