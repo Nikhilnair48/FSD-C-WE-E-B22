@@ -1,0 +1,47 @@
+.about-section {
+    display: flex;
+    justify-content: center;
+    padding: 2.5rem;
+}
+
+.about-content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    max-width: 1200px;
+    width: 100%;
+}
+
+.text-container {
+    flex: 1;
+    margin-right: 2rem;
+}
+
+.text-container h4 {
+    font-size: 1.2rem;
+    color: #198754;
+    margin-bottom: 0.5rem;
+}
+
+.text-container h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
+}
+
+.text-container p {
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.image-container {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+}
+
+.image-container img {
+    max-width: 100%;
+    height: auto;
+}

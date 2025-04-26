@@ -1,0 +1,157 @@
+/* carasouel container style */
+.carousel {
+    width: 100vw;
+    max-width: 100vw;
+    max-height: 80vh;
+    position: relative;
+    overflow: hidden;
+}
+
+/* hiding input radio */
+.carousel input[type="radio"] {
+    display: none;
+}
+
+.carousel .slide::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 1;
+}
+
+.slides {
+    display: flex;
+    flex-wrap: nowrap;
+    width: 400%;
+    transition: margin-left 0.5s ease-in-out;
+}
+
+.carousel .slide {
+    width: 100vw;
+    flex-shrink: 0;
+    position: relative;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    max-height: 80vh;
+    overflow: hidden;
+}
+
+.slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.carousel-controls .arrow {
+    display: none;
+}
+
+.arrows {
+    display: flex;
+    position: absolute;
+    top: 50%;
+    left: 1rem;
+    right: 1rem;
+    transform: translateY(-50%);
+    justify-content: space-between;
+    z-index: 2;
+}
+
+.arrow {
+    color: #ffff;
+    font-size: 1rem;
+    padding: 1rem;
+    border-radius: 50%;
+}
+
+.arrow.prev {
+    position: absolute;
+    left: 0;
+}
+
+.arrow.next {
+    position: absolute;
+    right: 0;
+}
+
+#slide-1:checked~.slides~.carousel-controls .slide1,
+#slide-2:checked~.slides~.carousel-controls .slide2,
+#slide-3:checked~.slides~.carousel-controls .slide3,
+#slide-4:checked~.slides~.carousel-controls .slide4 {
+    display: block;
+}
+
+.dots {
+    width: 100%;
+    position: absolute;
+    text-align: center;
+    bottom: 1rem;
+    z-index: 2;
+}
+
+.dots label {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin: 0 0.5rem;
+    background: #ccc;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+#slide-1:checked~.dots label[for="slide-1"],
+#slide-2:checked~.dots label[for="slide-2"],
+#slide-3:checked~.dots label[for="slide-3"],
+#slide-4:checked~.dots label[for="slide-4"] {
+    background: grey;
+}
+
+
+#slide-1:checked~.slides {
+    margin-left: 0%;
+}
+
+#slide-2:checked~.slides {
+    margin-left: -100%;
+}
+
+#slide-3:checked~.slides {
+    margin-left: -200%;
+}
+
+#slide-4:checked~.slides {
+    margin-left: -300%;
+}
+
+.carousel .overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    color: #fff;
+    text-align: center;
+}
+
+.overlay h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.overlay p {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+}
+
+.overlay a {
+    padding: 0.75rem 1rem;
+    background: #fff;
+    color: #000;
+    border-radius: .25rem;
+    text-decoration: none;
+}
