@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Social Media Post</title>
+</head>
+
+<body>
+    <div class="bg-white rounded-lg p-4 border border-gray-200 max-w-xl mx-auto my-6">
+        <div class="flex gap-3">
+            <div class="w-12 h-12 bg-indigo-500 flex-shrink-0 rounded-full"></div>
+            <div class="flex-grow">
+                <div class="flex justify-between items-center mb-1">
+                    <span class="font-semibold text-gray-900">Nikhil Nair</span>
+                    <span class="text-xs text-gray-500">2h ago</span>
+                </div>
+                <p class="text-sm text-gray-700">
+                    Just learned about Tailwind Flexbox! It makes aligning items so much easier. Loving the
+                    utility-first approach. #TailwindCSS #WebDev
+                </p>
+            </div>
+        </div>
+        <div class="flex justify-around mt-4 pt-3 border-t border-gray-100">
+            <button class="text-sm text-gray-600 hover:text-blue-600 font-medium flex item-center gap-1">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z">
+                    </path>
+                </svg>
+                Like
+            </button>
+            <button class="text-sm text-gray-600 hover:text-blue-600 font-medium flex item-center gap-1">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z">
+                    </path>
+                </svg>
+                Comment
+            </button>
+            <button class="text-sm text-gray-600 hover:text-blue-600 font-medium flex item-center gap-1">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M8.684 13.342A8.966 8.966 0 0112 11.506a8.966 8.966 0 013.316 1.836m0-5.291A9.006 9.006 0 0012 3c-4.032 0-7.5 2.914-8.684 6.658">
+                    </path>
+                </svg>
+                Share
+            </button>
+        </div>
+    </div>
+</body>
+
+</html>
