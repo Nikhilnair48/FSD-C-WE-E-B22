@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+    <nav class="fixed inset-x-0 top-0 z-50 w-full bg-[#198754] text-white shadow">
+        <div class="mx-auto flex items-center justify-between px-6 py-4 md:px-10 max-w-full">
+
+            <!-- Brand -->
+            <a href="#" class="text-2xl font-semibold tracking-wide w-48">Go Travel</a>
+
+            <!-- hidden checkbox that toggles the hamburger menu on mobile -->
+            <input id="nav-toogle" type="checkbox" class="peer hidden" />
+
+            <label for="nav-toogle"
+                class="grid h-10 w-10 cursor-pointer place-items-center rounded-md border border-white md:hidden hover:bg-white/10">
+                <div class="space-y-1.5">
+                    <span class="block h-0.5 w-6 bg-white"></span>
+                    <span class="block h-0.5 w-6 bg-white"></span>
+                    <span class="block h-0.5 w-6 bg-white"></span>
+                </div>
+            </label>
+
+
+            <ul class="flex px-6 pb-6 gap-6 w-full top-full
+            flex-col hidden absolute left-0 mt-4
+            md:static md:flex md:w-auto md:flex-row md:items-center mg:gap-8 md:2">
+                <li><a href="#" class="block font-medium hover:opacity-90">Home</a></li>
+                <li><a href="#" class="block font-medium hover:opacity-90">About Us</a></li>
+                <li><a href="#" class="block font-medium hover:opacity-90">Destination</a></li>
+                <li><a href="#" class="block font-medium hover:opacity-90">Testimonials</a></li>
+                <li><a href="#" class="block font-medium hover:opacity-90">Contact Us</a></li>
+
+                <li>
+                    <a href="#" class="inline-block rounded-md bg-white py-3 px-2 text-sm font-semibold
+                    text-[#000000]">SignUp</a>
+                </li>
+                <li>
+                    <a href="#" class="inline-block rounded-md py-3 px-2 text-sm font-semibold
+                    text-white border border-white transition hover:bg-white hover:text-black">Login</a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+</body>
+
+</html>
