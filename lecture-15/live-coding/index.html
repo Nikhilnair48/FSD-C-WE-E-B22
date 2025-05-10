@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+    <nav class="fixed inset-x-0 top-0 z-50 w-full bg-[#198754] text-white shadow">
+        <div class="mx-auto flex items-center justify-between px-6 py-4 md:px-10 max-w-full lg:max-w-[1600px]">
+
+            <!-- Brand -->
+            <a href="#" class="text-2xl font-bold tracking-wide">Go Travel</a>
+
+            <!-- Hidden checkbox drives the hamburger → menu toggle  -->
+            <input id="nav-toggle" type="checkbox" class="peer hidden" />
+
+            <!-- Hamburger icon (label toggles the checkbox) -->
+            <label for="nav-toggle" class="grid h-10 w-10 cursor-pointer place-items-center rounded-md 
+                    border border-white/30 md:hidden hover:bg-white/10">
+                <span class="sr-only">Open main menu</span>
+                <div class="space-y-1.5">
+                    <span class="block h-0.5 w-6 bg-white"></span>
+                    <span class="block h-0.5 w-6 bg-white"></span>
+                    <span class="block h-0.5 w-6 bg-white"></span>
+                </div>
+            </label>
+
+            <ul class="absolute left-0 top-full hidden w-full flex-col gap-6 bg-[#198754]/95
+               px-6 pb-6 pt-4
+               peer-checked:flex               <!-- :lock: shows when checkbox checked -->
+               md:static md:flex md:w-auto md:flex-row md:items-center md:gap-10
+               md:bg-transparent md:p-0">
+                <li><a href="#" class="block font-medium hover:opacity-90">Home</a></li>
+                <li><a href="#" class="block font-medium hover:opacity-90">About Us</a></li>
+                <li><a href="#" class="block font-medium hover:opacity-90">Destination</a></li>
+                <li><a href="#" class="block font-medium hover:opacity-90">Testimonials</a></li>
+                <li><a href="#" class="block font-medium hover:opacity-90">Contact Us</a></li>
+            </ul>
+            <div class="hidden md:flex md:items-center md:gap-4">
+                <a href="#" class="inline-block rounded-md bg-white px-5 py-2 text-sm font-semibold
+                                  text-[#198754] transition hover:bg-gray-100">
+                    SignUp
+                </a>
+                <a href="#" class="inline-block rounded-md border border-white px-5 py-2 text-sm font-semibold
+                                  transition hover:bg-white/10">
+                    Login
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="relative h-[80vh] lg:h-[90vh] overflow-hidden">
+        <!-- SLIDE 1 -->
+        <input id="slide-1" type="radio" name="hero" class="peer/s1" checked />
+        <!-- left/right arrow -->
+        <label for="slide-4" class="hidden peer-checked/s1:block z-30 absolute left-4 top-1/2 -translate-y-1/2
+                      cursor-pointer text-4xl font-bold text-white drop-shadow hover:text-black-200">‹</label>
+        <label for="slide-2" class="hidden peer-checked/s1:block z-30 absolute right-4 top-1/2 -translate-y-1/2
+                      cursor-pointer text-4xl font-bold text-white drop-shadow hover:text-black-200">›</label>
+        <!-- image -->
+        <div
+            class="opacity-0 peer-checked/s1:opacity-100 transition-opacity duration-700 absolute inset-0 z-0 bg-[url('images/1.jpg')] bg-cover bg-center">
+        </div>
+        <!-- overlay -->
+        <div class="absolute inset-0 z-10 bg-black/25 pointer-events-none"></div>
+        <!-- content -->
+        <div class="absolute inset-0 z-20 flex flex-col items-center justify-center text-center
+        opacity-0 peer-checked/s1:opacity-100 transition-opacity duration-700 px-4">
+            <h2 class="mb-2 text-2xl sm:text-4xl lg:text-5xl font-semibold text-white">Enjoy With Your Club & Create
+                Memories</h2>
+            <p class="mb-5 text-lg text-white">Some representative placeholder content for the first slide.</p>
+            <a href="#" class="rounded-md bg-white px-8 py-3 font-normal text-black">Explore Now</a>
+        </div>
+
+        <!-- SLIDE 2 -->
+        <input id="slide-2" type="radio" name="hero" class="peer/s2" />
+        <!-- left/right arrow -->
+        <label for="slide-1" class="hidden peer-checked/s2:block z-30 absolute left-4 top-1/2 -translate-y-1/2
+                      cursor-pointer text-4xl font-bold text-white drop-shadow hover:text-black-200">‹</label>
+        <label for="slide-3" class="hidden peer-checked/s2:block z-30 absolute right-4 top-1/2 -translate-y-1/2
+                      cursor-pointer text-4xl font-bold text-white drop-shadow hover:text-black-200">›</label>
+        <!-- image -->
+        <div
+            class="opacity-0 peer-checked/s2:opacity-100 transition-opacity duration-700 absolute inset-0 z-0 bg-[url('images/2.jpg')] bg-cover bg-center">
+        </div>
+        <!-- overlay -->
+        <div class="absolute inset-0 z-10 bg-black/25 pointer-events-none"></div>
+        <!-- content -->
+        <div class="absolute inset-0 z-20 flex flex-col items-center justify-center text-center
+        opacity-0 peer-checked/s2:opacity-100 transition-opacity duration-700 px-4">
+            <h2 class="mb-2 text-2xl sm:text-4xl lg:text-5xl font-semibold text-white">Carasoul Image 2
+                Memories</h2>
+            <p class="mb-5 text-lg text-white">Some representative placeholder content for the second slide.</p>
+            <a href="#" class="rounded-md bg-white px-8 py-3 font-normal text-black">Explore Now</a>
+        </div>
+
+        <!-- SLIDE 3 -->
+        <input id="slide-3" type="radio" name="hero" class="peer/s3" />
+        <!-- left/right arrow -->
+        <label for="slide-2" class="hidden peer-checked/s3:block z-30 absolute left-4 top-1/2 -translate-y-1/2
+                      cursor-pointer text-4xl font-bold text-white drop-shadow hover:text-black-200">‹</label>
+        <label for="slide-4" class="hidden peer-checked/s3:block z-30 absolute right-4 top-1/2 -translate-y-1/2
+                      cursor-pointer text-4xl font-bold text-white drop-shadow hover:text-black-200">›</label>
+        <!-- image -->
+        <div
+            class="opacity-0 peer-checked/s3:opacity-100 transition-opacity duration-700 absolute inset-0 z-0 bg-[url('images/3.jpg')] bg-cover bg-center">
+        </div>
+        <!-- overlay -->
+        <div class="absolute inset-0 z-10 bg-black/25 pointer-events-none">
+        </div>
+        <!-- content -->
+        <div class="absolute inset-0 z-20 flex flex-col items-center justify-center text-center
+        opacity-0 peer-checked/s3:opacity-100 transition-opacity duration-700 px-4">
+            <h2 class="mb-2 text-2xl sm:text-4xl lg:text-5xl font-semibold text-white">Carasoul Image 3
+                Memories</h2>
+            <p class="mb-5 text-lg text-white">Some representative placeholder content for the third slide.</p>
+            <a href="#" class="rounded-md bg-white px-8 py-3 font-normal text-black">Explore Now</a>
+        </div>
+
+        <!-- SLIDE 4 -->
+        <input id="slide-4" type="radio" name="hero" class="peer/s4" />
+        <!-- left/right arrow -->
+        <label for="slide-3" class="hidden peer-checked/s4:block z-30 absolute left-4 top-1/2 -translate-y-1/2
+                      cursor-pointer text-4xl font-bold text-white drop-shadow hover:text-black-200">‹</label>
+        <label for="slide-1" class="hidden peer-checked/s4:block z-30 absolute right-4 top-1/2 -translate-y-1/2
+                      cursor-pointer text-4xl font-bold text-white drop-shadow hover:text-black-200">›</label>
+        <!-- image -->
+        <div
+            class="opacity-0 peer-checked/s4:opacity-100 transition-opacity duration-700 absolute inset-0 z-0 bg-[url('images/4.jpg')] bg-cover bg-center">
+        </div>
+        <!-- overlay -->
+        <div class="absolute inset-0 z-10 bg-black/25 pointer-events-none"></div>
+        <!-- content -->
+        <div class="absolute inset-0 z-20 flex flex-col items-center justify-center text-center
+        opacity-0 peer-checked/s4:opacity-100 transition-opacity duration-700 px-4">
+            <h2 class="mb-2 text-2xl sm:text-4xl lg:text-5xl font-semibold text-white">Carasoul Image 4
+                Memories</h2>
+            <p class="mb-5 text-lg text-white">Some representative placeholder content for the forth slide.</p>
+            <a href="#" class="rounded-md bg-white px-8 py-3 font-normal text-black">Explore Now</a>
+        </div>
+
+        <!-- progress dashes -->
+        <div class="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-4 z-20">
+            <label for="slide-1" class="h-1.5 w-10 rounded-full bg-white-250 cursor-pointer"></label>
+            <label for="slide-2" class="h-1.5 w-10 rounded-full bg-white-250 cursor-pointer"></label>
+            <label for="slide-3" class="h-1.5 w-10 rounded-full bg-white-250 cursor-pointer"></label>
+            <label for="slide-4" class="h-1.5 w-10 rounded-full bg-white-250 cursor-pointer"></label>
+        </div>
+
+    </section>
+
+    <section class="py-16 bg-white mb-20">
+        <div class="mx-auto max-w-7xl h-[30vh] px-4 sm:px-6 lg:px-8">
+            <!-- Text container -->
+            <div class="grid grid-cols-1 gap-12 md:grid-cols-2 md:gap-16 items-center">
+                <div>
+                    <p class="text-sm font-medium text-[#198754]">About Us</p>
+                    <h2 class="mt-2 text-3xl font-semibold leading-tight text-black-900 sm:text-4xl">Our Journey is
+                        Started
+                        With a Determination To Travel All Around This World</h2>
+                    <p class="mt-4 text-lg text-black-700">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Veritatis quo accusantium eveniet!
+                        Eligendi,
+                        officia! Minima soluta maxime minus explicabo accusamus amet quaerat optio, saepe hic dolor vel
+                        iure
+                        velit enim?</p>
+                </div>
+                <!-- image container -->
+                <div>
+                    <img src="images/abt-us.jpg" alt="Travel planning items on a map"
+                        class="w-full rounded-2xl object-cover" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 bg-white">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
+            <p class="text-sm font-medium text-[#198754]">Destination</p>
+            <h2 class="mt-2 text-3xl font-semibold text-black-900 sm:text-4xl">Explore The Breath-Taking Adventures With
+                Us
+            </h2>
+
+            <div class="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+                <!-- card 1 -->
+                <div class="overflow-hidden rounded-2xl bg-white shadow">
+                    <!-- image container -->
+                    <div class="aspect-[9/16] w-full">
+                        <img src="images/des-1.jpg" alt="Get Into Wild In Indonesia"
+                            class="w-full h-full object-cover" />
+                    </div>
+                    <!-- text container -->
+                    <div class="px-5 py-2">
+                        <h3 class="text-lg font-semibold text-black-900">Get Into Wild In Indonesia</h3>
+                    </div>
+                    <div class="flex items-center justify-between text-black-700">
+                        <span>3 days 4 nights</span>
+                        <span class="font-semibold text-black-800">Rs 19,999</span>
+                    </div>
+                </div>
+                <!-- card 2 -->
+                <div class="overflow-hidden rounded-2xl bg-white shadow">
+                    <!-- image container -->
+                    <div class="aspect-[9/16] w-full">
+                        <img src="images/des-2.jpg" alt="Get Into Wild In Indonesia"
+                            class="w-full h-full object-cover" />
+                    </div>
+                    <!-- text container -->
+                    <div class="px-5 py-2">
+                        <h3 class="text-lg font-semibold text-black-900">Get Into Wild In Italy</h3>
+                    </div>
+                    <div class="flex items-center justify-between text-black-700">
+                        <span>3 days 4 nights</span>
+                        <span class="font-semibold text-black-800">Rs 19,999</span>
+                    </div>
+                </div>
+                <!-- card 1 -->
+                <div class="overflow-hidden rounded-2xl bg-white shadow">
+                    <!-- image container -->
+                    <div class="aspect-[9/16] w-full">
+                        <img src="images/des-3.jpg" alt="Get Into Wild In Indonesia"
+                            class="w-full h-full object-cover" />
+                    </div>
+                    <!-- text container -->
+                    <div class="px-5 py-2">
+                        <h3 class="text-lg font-semibold text-black-900">Get Into Wild In Greece</h3>
+                    </div>
+                    <div class="flex items-center justify-between text-black-700">
+                        <span>3 days 4 nights</span>
+                        <span class="font-semibold text-black-800">Rs 19,999</span>
+                    </div>
+                </div>
+                <!-- card 4 -->
+                <div class="overflow-hidden rounded-2xl bg-white shadow">
+                    <!-- image container -->
+                    <div class="aspect-[9/16] w-full">
+                        <img src="images/des-4.jpg" alt="Get Into Wild In Indonesia"
+                            class="w-full h-full object-cover" />
+                    </div>
+                    <!-- text container -->
+                    <div class="px-5 py-2">
+                        <h3 class="text-lg font-semibold text-black-900">Get Into Wild In UAE</h3>
+                    </div>
+                    <div class="flex items-center justify-between text-black-700">
+                        <span>3 days 4 nights</span>
+                        <span class="font-semibold text-black-800">Rs 19,999</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- testimonials section -->
+    <section class="relative bg-[url('images/testimonials.jpeg')] bg-cover bg-center
+    h-[80vh] min-h-[400px flex items-center justify-center]">
+        <!-- overlay -->
+        <div class="absolute inset-0 bg-black/10"></div>
+
+        <!-- managing the viewport + track the current testimonial state -->
+        <div class="relative w-full max-w-3xl mx-auto overflow-hidden px-4
+        bg-[rgba(255, 255, 255, 0.493)] backdrop-blur-sm z-10">
+            <input id="t-1" type="radio" name="testi" class="peer/t1" checked>
+            <input id="t-2" type="radio" name="testi" class="peer/t2">
+            <input id="t-3" type="radio" name="testi" class="peer/t3">
+
+            <!-- testimonial 1 arrows -->
+            <label for="t-3" class="hidden peer-checked:t1/block absolute left-3 top-1/2 -translate-y-1/2 z-20 
+                cursor-pointer text-4xl font-bold text-gray-700 hover:text-gray-900">‹</label>
+            <label for="t-2" class="hidden peer-checked:t1/block absolute right-3 top-1/2 -translate-y-1/2 z-20 
+                cursor-pointer text-4xl font-bold text-gray-700 hover:text-gray-900">›</label>
+            <!-- testimonial 2 arrows -->
+            <label for="t-1" class="hidden peer-checked:t2/block absolute left-3 top-1/2 -translate-y-1/2 z-20 
+                cursor-pointer text-4xl font-bold text-gray-700 hover:text-gray-900">‹</label>
+            <label for="t-3" class="hidden peer-checked:t2/block absolute right-3 top-1/2 -translate-y-1/2 z-20 
+                cursor-pointer text-4xl font-bold text-gray-700 hover:text-gray-900">›</label>
+            <!-- testimonial 3 arrows -->
+            <label for="t-2" class="hidden peer-checked:t3/block absolute left-3 top-1/2 -translate-y-1/2 z-20 
+                cursor-pointer text-4xl font-bold text-gray-700 hover:text-gray-900">‹</label>
+            <label for="t-3" class="hidden peer-checked:t3/block absolute right-3 top-1/2 -translate-y-1/2 z-20 
+                cursor-pointer text-4xl font-bold text-gray-700 hover:text-gray-900">›</label>
+
+            <div class="flex transition-transform duration-700 ease-in-out
+            peer-checked/t1:translate-x-0
+            peer-checked/t2:-translate-x-[100%]
+            peer-checked/t3:-translate-x-[200%]">
+                <!-- testimonial 1 -->
+                <div class="shrink-0  w-full py=16 px-6 flex flex-col items-center text-center">
+                    <p class="mb-4 text-gray-800">Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus ad
+                        sit illo itaque, maiores
+                        dolores voluptates exercitationem! Molestias illo officiis omnis. Ipsa sed doloribus laboriosam
+                        explicabo odit, optio similique dolorem.</p>
+                    <h3 class="mb-1 text-lg font-semibold text-[#198754]">Naveen Patnaik</h3>
+                    <span class="text-sm text-color-gray-600">Client</span>
+                </div>
+                <!-- testimonial 2 -->
+                <div class="shrink-0  w-full py=16 px-6 flex flex-col items-center text-center">
+                    <p class="mb-4 text-gray-800">Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus ad
+                        sit illo itaque, maiores
+                        dolores voluptates exercitationem! Molestias illo officiis omnis. Ipsa sed doloribus laboriosam
+                        explicabo odit, optio similique dolorem.</p>
+                    <h3 class="mb-1 text-lg font-semibold text-[#198754]">Ahmed Shezath</h3>
+                    <span class="text-sm text-color-gray-600">Traveller</span>
+                </div>
+                <!-- testimonial 3 -->
+                <div class="shrink-0  w-full py=16 px-6 flex flex-col items-center text-center">
+                    <p class="mb-4 text-gray-800">Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus ad
+                        sit illo itaque, maiores
+                        dolores voluptates exercitationem! Molestias illo officiis omnis. Ipsa sed doloribus laboriosam
+                        explicabo odit, optio similique dolorem.</p>
+                    <h3 class="mb-1 text-lg font-semibold text-[#198754]">Elizabath</h3>
+                    <span class="text-sm text-color-gray-600">Explorer</span>
+                </div>
+            </div>
+
+            <!-- progress dots -->
+            <div class="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1
+            [&>label]:bg-gray-200 
+            [&>label]:hoven:bg-gray-400
+            peer-checked/t1:[&>label:nth-child(1):bg-gray-600]
+            peer-checked/t2:[&>label:nth-child(2):bg-gray-600]
+            peer-checked/t3:[&>label:nth-child(3):bg-gray-600]
+            ">
+                <label for="t-1" class="h-2 w-8 rounded-full cursor-pointer"></label>
+                <label for="t-2" class="h-2 w-8 rounded-full cursor-pointer"></label>
+                <label for="t-3" class="h-2 w-8 rounded-full cursor-pointer"></label>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>
