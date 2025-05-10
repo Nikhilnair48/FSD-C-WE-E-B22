@@ -10,7 +10,7 @@
 
 <body>
     <nav class="fixed inset-x-0 top-0 z-50 w-full bg-[#198754] text-white shadow">
-        <div class="mx-auto flex items-center justify-between px-6 py-4 md:px-10 max-w-full">
+        <div class="mx-auto flex items-center justify-between px-6 py-4 md:px-10 max-w-full lg:max-w-[1600px]">
 
             <!-- Brand -->
             <a href="#" class="text-2xl font-semibold tracking-wide w-48">Go Travel</a>
@@ -27,10 +27,12 @@
                 </div>
             </label>
 
-
-            <ul class="flex px-6 pb-6 gap-6 w-full top-full
-            flex-col hidden absolute left-0 mt-4
-            md:static md:flex md:w-auto md:flex-row md:items-center mg:gap-8 md:2">
+            <ul class="left-0 top-full hidden w-full flex-col gap-6 bg-[#198754]
+            px-6 pb-6 pt-4
+            peer-checked:flex
+            d:static md:flex md:w-auto md:flex-row md:items-center md:gap-8 md:p-2
+            md:bg-transparent
+            ">
                 <li><a href="#" class="block font-medium hover:opacity-90">Home</a></li>
                 <li><a href="#" class="block font-medium hover:opacity-90">About Us</a></li>
                 <li><a href="#" class="block font-medium hover:opacity-90">Destination</a></li>
@@ -38,17 +40,104 @@
                 <li><a href="#" class="block font-medium hover:opacity-90">Contact Us</a></li>
 
                 <li>
-                    <a href="#" class="inline-block rounded-md bg-white py-3 px-2 text-sm font-semibold
+                    <a href="#" class="inline-block rounded-md bg-white py-2 px-5 text-sm font-semibold
                     text-[#000000]">SignUp</a>
                 </li>
                 <li>
-                    <a href="#" class="inline-block rounded-md py-3 px-2 text-sm font-semibold
+                    <a href="#" class="inline-block rounded-md py-2 px-5 text-sm font-semibold
                     text-white border border-white transition hover:bg-white hover:text-black">Login</a>
                 </li>
             </ul>
 
         </div>
     </nav>
+
+    <section class="">
+        <!-- SLIDE 1 -->
+        <input id="slide-1" type="radio" name="hero" class="peer/s1" checked />
+        <label for="slide-4" class="hidden peer-checked/s1:block z-30 absolute left-4 top-1/2 -translate-y-1/2
+            cursor-pointer text-4xl font-bold text-white">&#8250;</label>
+        <label for="slide-2" class="hidden peer-checked/s1:block z-30 absolute right-4 top-1/2 -translate-y-1/2
+            cursor-pointer text-4xl font-bold text-white">&#8249;</label>
+        <!-- image -->
+        <div class="absolute inset-0 z-0 bg-[url('images/1.jpg')] bg-cover bg-center"></div>
+        <!-- overlay -->
+        <div class="absolute inset-0 z-10 bg-black/25"></div>
+        <!-- content -->
+        <div class="absolute inset-0 z-20 flex flex-col items-center justify-center text-center
+        opacity-0 peer-checked/s1:opacity-100 transition-opacity duration-700 px-4">
+            <h2 class="mb-2 text-2xl sm:text-4xl lg:text:5xl font-semibold text-white">Enjoy With Your Club & Create
+                Memories</h2>
+            <p class="mb-5 text-lg text-white">Some representative placeholder content for the first slide.</p>
+            <a href="#" class="rounded-md bg-white px-8 font-semibold text-black">Explore Now</a>
+        </div>
+
+        <!-- SLIDE 2 -->
+        <input id="slide-2" type="radio" name="hero" class="peer/s2" />
+        <label for="slide-1" class="hidden peer-checked/s1:block z-30 absolute left-4 top-1/2 -translate-y-1/2
+            cursor-pointer text-4xl font-bold text-white">&#8250;</label>
+        <label for="slide-3" class="hidden peer-checked/s1:block z-30 absolute right-4 top-1/2 -translate-y-1/2
+            cursor-pointer text-4xl font-bold text-white">&#8249;</label>
+        <!-- image -->
+        <div class="absolute inset-0 z-0 bg-[url('images/2.jpg')] bg-cover bg-center"></div>
+        <!-- overlay -->
+        <div class="absolute inset-0 z-10 bg-black/25"></div>
+        <!-- content -->
+        <div class="absolute inset-0 z-20 flex flex-col items-center justify-center text-center
+        opacity-0 peer-checked/s1:opacity-100 transition-opacity duration-700 px-4">
+            <h2 class="mb-2 text-2xl sm:text-4xl lg:text:5xl font-semibold text-white">Carasoul Image 2
+                Memories</h2>
+            <p class="mb-5 text-lg text-white">Some representative placeholder content for the second slide.</p>
+            <a href="#" class="rounded-md bg-white px-8 font-semibold text-black">Explore Now</a>
+        </div>
+
+        <!-- SLIDE 3 -->
+        <input id="slide-3" type="radio" name="hero" class="peer/s3" />
+        <label for="slide-4" class="hidden peer-checked/s1:block z-30 absolute left-4 top-1/2 -translate-y-1/2
+            cursor-pointer text-4xl font-bold text-white">&#8250;</label>
+        <label for="slide-2" class="hidden peer-checked/s1:block z-30 absolute right-4 top-1/2 -translate-y-1/2
+            cursor-pointer text-4xl font-bold text-white">&#8249;</label>
+        <!-- image -->
+        <div class="absolute inset-0 z-0 bg-[url('images/3.jpg')] bg-cover bg-center"></div>
+        <!-- overlay -->
+        <div class="absolute inset-0 z-10 bg-black/25"></div>
+        <!-- content -->
+        <div class="absolute inset-0 z-20 flex flex-col items-center justify-center text-center
+        opacity-0 peer-checked/s1:opacity-100 transition-opacity duration-700 px-4">
+            <h2 class="mb-2 text-2xl sm:text-4xl lg:text:5xl font-semibold text-white">Carasoul Image 3
+                Memories</h2>
+            <p class="mb-5 text-lg text-white">Some representative placeholder content for the third slide.</p>
+            <a href="#" class="rounded-md bg-white px-8 font-semibold text-black">Explore Now</a>
+        </div>
+
+        <!-- SLIDE 4 -->
+        <input id="slide-4" type="radio" name="hero" class="peer/s4" />
+        <label for="slide-1" class="hidden peer-checked/s1:block z-30 absolute left-4 top-1/2 -translate-y-1/2
+            cursor-pointer text-4xl font-bold text-white">&#8250;</label>
+        <label for="slide-3" class="hidden peer-checked/s1:block z-30 absolute right-4 top-1/2 -translate-y-1/2
+            cursor-pointer text-4xl font-bold text-white">&#8249;</label>
+        <!-- image -->
+        <div class="absolute inset-0 z-0 bg-[url('images/4.jpg')] bg-cover bg-center"></div>
+        <!-- overlay -->
+        <div class="absolute inset-0 z-10 bg-black/25"></div>
+        <!-- content -->
+        <div class="absolute inset-0 z-20 flex flex-col items-center justify-center text-center
+        opacity-0 peer-checked/s1:opacity-100 transition-opacity duration-700 px-4">
+            <h2 class="mb-2 text-2xl sm:text-4xl lg:text:5xl font-semibold text-white">Carasoul Image 4
+                Memories</h2>
+            <p class="mb-5 text-lg text-white">Some representative placeholder content for the forth slide.</p>
+            <a href="#" class="rounded-md bg-white px-8 font-semibold text-black">Explore Now</a>
+        </div>
+
+        <!-- progress dashes -->
+        <div class="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-4 z-20">
+            <label for="slide-1" class="h-1.5 w-10 rounded-full bg-white-250 cursor-pointer"></label>
+            <label for="slide-2" class="h-1.5 w-10 rounded-full bg-white-250 cursor-pointer"></label>
+            <label for="slide-3" class="h-1.5 w-10 rounded-full bg-white-250 cursor-pointer"></label>
+            <label for="slide-4" class="h-1.5 w-10 rounded-full bg-white-250 cursor-pointer"></label>
+        </div>
+
+    </section>
 </body>
 
 </html>
