@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Treasure Hunt</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        #treasure-map {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .treasure-item {
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px dashed #ccc;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .hidden-treasure {
+            display: none;
+            /* Initially hidden */
+        }
+
+        .found-treasure {
+            display: block !important;
+            /* Make sure it shows */
+            background-color: #fff7e6;
+            /* Light gold */
+            border: 2px solid #ffd700;
+            /* Gold border */
+            color: #b8860b;
+            /* Darker gold text */
+            font-weight: bold;
+            transform: scale(1.02);
+        }
+
+        .gem {
+            font-style: italic;
+        }
+
+        .secret-list {
+            list-style-type: square;
+        }
+
+        h1,
+        h2 {
+            color: #555;
+        }
+
+        button {
+            padding: 10px 15px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+            margin-right: 5px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .controls {
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>DOM Treasure Hunt!</h1>
+    <p>Use JavaScript to find and reveal the hidden treasures on this map.</p>
+
+    <div class="controls">
+        <h2>Treasure Finding Controls</h2>
+        <button onclick="findGoldCoin()">Find Gold Coin (ID)</button>
+        <button onclick="findAllGems()">Find All Gems (Class)</button>
+        <button onclick="findAncientScroll()">Find Ancient Scroll (Query Selector)</button>
+        <button onclick="findAllSecretNotes()">Find All Secret Notes (Query Selector All)</button>
+        <button onclick="findHiddenCave()">Find Hidden Cave (Complex Query)</button>
+        <button onclick="resetTreasures()">Reset Treasures</button>
+    </div>
+
+    <div id="treasure-map">
+        <h2>The Treasure Map</h2>
+
+        <div id="area-1" class="treasure-item">
+            <p>This is area 1. Nothing special here... or is there?</p>
+            <p id="gold-coin" class="hidden-treasure">Congratulations! You found the Gold Coin!</p>
+        </div>
+
+        <div id="area-2" class="treasure-item">
+            <p>Area 2 contains some sparkling items.</p>
+            <span class="gem hidden-treasure">A Ruby!</span>
+            <p>More to see...</p>
+            <span class="gem hidden-treasure">An Emerald!</span>
+            <span class="gem hidden-treasure">A Sapphire!</span>
+        </div>
+
+        <div id="area-3" class="treasure-item">
+            <p>Legends speak of an ancient scroll in this area.</p>
+            <div class="scroll-container">
+                <p class="ancient-text hidden-treasure" data-content="scroll">The Ancient Scroll reveals great wisdom!
+                </p>
+            </div>
+        </div>
+
+        <div id="area-4" class="treasure-item">
+            <p>Secret notes are scattered around here.</p>
+            <ul class="secret-list">
+                <li>A regular list item.</li>
+                <li class="note hidden-treasure">Secret Note Alpha!</li>
+                <li>Another regular item.</li>
+                <li class="note hidden-treasure">Secret Note Beta!</li>
+            </ul>
+        </div>
+
+        <div id="area-5" class="treasure-item">
+            <p>Deep within this area, a cave might be hidden.</p>
+            <section>
+                <div>
+                    <article class="hidden-treasure" id="cave-entrance">
+                        You've discovered the Hidden Cave Entrance!
+                    </article>
+                </div>
+            </section>
+        </div>
+
+    </div>
+
+    <script>
+        // Function to apply 'found' style
+        function markAsFound(element) {
+            if (element) {
+                element.classList.remove('hidden-treasure');
+                element.classList.add('found-treasure');
+            }
+        }
+
+        // Function to reset all treasures to hidden
+        function resetTreasures() {
+            const allTreasures = document.querySelectorAll('.found-treasure');
+            allTreasures.forEach(treasure => {
+                treasure.classList.remove('found-treasure');
+                treasure.classList.add('hidden-treasure');
+            });
+            console.log("Treasures have been reset!");
+        }
+
+        // 1. Find by ID
+        function findGoldCoin() {
+            console.log("Attempting to find Gold Coin...");
+        }
+
+        // 2. Find by Class Name
+        function findAllGems() {
+            console.log("Attempting to find all Gems...");
+        }
+
+        // 3. Find by Query Selector (first match)
+        function findAncientScroll() {
+            console.log("Attempting to find Ancient Scroll...");
+        }
+
+        // 4. Find by Query Selector All
+        function findAllSecretNotes() {
+            console.log("Attempting to find all Secret Notes...");
+        }
+
+        // 5. Find a more complex element (e.g., an element deep in the structure)
+        function findHiddenCave() {
+            console.log("Attempting to find Hidden Cave...");
+        }
+
+    </script>
+
+</body>
+
+</html>
