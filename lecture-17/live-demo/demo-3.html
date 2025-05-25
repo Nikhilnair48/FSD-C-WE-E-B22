@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <style>
+        body {
+            font-family: sans-serif;
+            padding: 1rem;
+        }
+
+        #container {
+            border: 1px solid black;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        button {
+            margin: 0.25rem;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>DOM element creation demo</h2>
+    <div id="container">
+        <p>Sample paragraph</p>
+    </div>
+
+    <button onclick="demoCreateElement()">Create element</button>
+    <button onclick="demoAppendChild()">Append Child</button>
+    <button onclick="demoAppend()">Append</button>
+    <button onclick="demoInsertBefore()">Insert Before</button>
+    <button onclick="demoPrepend()">Prepend</button>
+    <button onclick="demoRemoveChild()">Remove child</button>
+    <button onclick="demoRemove()">Remove</button>
+
+    <script>
+        const container = document.getElementById("container");
+        function demoCreateElement() {
+            const paragraph = document.createElement('p');
+            paragraph.textContent = "paragraph text in memory";
+            console.log(paragraph);
+        }
+        function demoAppendChild() {
+            const paragraph = document.createElement("p");
+            paragraph.textContent = "pargraph to be appended";
+            container.appendChild(paragraph);
+        }
+        function demoAppend() {
+            const em = document.createElement("em");
+            em.textContent = "appended emphasized";
+            container.append("Some text ", em, " and some more text");
+        }
+        function demoInsertBefore() {
+            const paragraph = document.createElement("p");
+            paragraph.textContent = "paragraph from insert before";
+            const firstElem = container.firstElementChild;
+            container.insertBefore(paragraph, firstElem);
+        }
+        function demoPrepend() {
+            const paragraph = document.createElement("p");
+            paragraph.textContent = "paragraph from demoPrepend";
+            container.prepend(paragraph);
+        }
+        function demoRemoveChild() {
+            const last = container.lastElementChild;
+            console.log(last);
+            if (last) {
+                container.removeChild(last);
+            }
+        }
+        function demoRemove() {
+            const first = container.firstElementChild;
+            console.log(first);
+            if (first) {
+                first.remove();
+            }
+        }
+    </script>
+</body>
+
+</html>

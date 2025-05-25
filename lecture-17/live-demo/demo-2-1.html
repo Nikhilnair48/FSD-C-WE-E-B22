@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <style>
+        #container {
+            padding: 1rem;
+            border: 1px solid black;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .highlight {
+            background-color: yellow;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="container">
+        Classlist demo
+    </div>
+
+    <button onclick="addClass()">Add class</button>
+    <button onclick="removeClass()">Remove class</button>
+    <button onclick="toggleClass()">Toggle class</button>
+    <button onclick="checkClass()">Contains?</button>
+
+    <script>
+        const container = document.getElementById("container");
+        function addClass() {
+            container.classList.add("highlight");
+        }
+
+        function removeClass() {
+            container.classList.remove("highlight");
+        }
+        function toggleClass() {
+            container.classList.toggle("highlight");
+        }
+        function checkClass() {
+            alert(container.classList.contains("highlight"))
+        }
+
+    </script>
+</body>
+
+</html>

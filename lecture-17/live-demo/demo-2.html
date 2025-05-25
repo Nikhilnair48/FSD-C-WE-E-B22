@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+    <h2 id="title">DOM manipulation Demo</h2>
+
+    <!-- Content -->
+    <p id="fsd-15">Full Stack Web Dev Lecture 15</p>
+
+    <!-- attribute -->
+    <img id="img" src="https://example.com/12312" alt="Classroom" />
+    <a id="anchor" href="https://google.com" target="_blank">Google.com</a>
+
+    <button onclick="changeText()">textContent -> plain text</button>
+    <button onclick="changeHTML()">innerHTML -> inject HTML</button>
+    <button onclick="showImgSrc()">getAttribute</button>
+    <button onclick="setImgeSrc()">setAttribute</button>
+    <button onclick="changeStyle()">style (color & fontsize)</button>
+
+    <div id="container">
+        Style me
+    </div>
+
+    <script>
+        function changeText() {
+            const paragraph = document.getElementById("fsd-15");
+            paragraph.textContent = "Don't mind me - I'm some plain text";
+        }
+
+        function changeHTML() {
+            let paragraph = document.getElementsByTagName("p");
+            console.log(paragraph);
+            paragraph[0].innerHTML = "<em>Full Stack Web Dev<em> <strong>Lecture 15<strong>"
+        }
+
+        function showImgSrc() {
+            const image = document.getElementById("img");
+            image.getAttribute("src");
+        }
+
+        function setImgeSrc() {
+            let image = document.getElementById("img");
+            image.setAttribute("src", "https://img.freepik.com/free-vector/empty-classroom-interior-with-chalkboard_1308-61229.jpg?semt=ais_hybrid&w=740")
+        }
+
+        function changeStyle() {
+            const container = document.getElementById("container");
+            container.style.color = "white";
+            container.style.backgroundColor = "blue";
+            container.style.fontSize = "18px";
+        }
+
+    </script>
+</body>
+
+</html>

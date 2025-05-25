@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+    <h2 id="title">Selection Demo</h2>
+
+    <p class="note">Note A</p>
+    <p class="note">Note B</p>
+
+    <div class="box">Box 1</div>
+    <div class="box">Box 2</div>
+
+    <ul>
+        <li class="fruit">Apple</li>
+        <li class="fruit">Mango</li>
+        <li class="fruit">Orange</li>
+    </ul>
+
+
+    <button onclick="getById()">Get element by Id</button>
+    <button onclick="getByClassOrTag()">Get element by ClassName or TagName</button>
+    <button onclick="getByQuerySelector()">Select using querySelector</button>
+    <button onclick="getByQuerySelectorAll()">Select using querySelectorAll</button>
+
+
+    <script>
+        function getById() {
+            const title = document.getElementById("title");
+            console.log(title);
+        }
+
+        function getByClassOrTag() {
+            console.log(document.getElementsByClassName("note"));
+            console.log(document.getElementsByTagName("div"));
+        }
+
+        function getByQuerySelector() {
+            let box = document.querySelector(".box");
+            console.log(box);
+        }
+
+        function getByQuerySelectorAll() {
+            let fruits = document.querySelectorAll(".fruit");
+            console.log(fruits);
+        }
+    </script>
+</body>
+
+</html>
