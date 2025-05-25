@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-G">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Mood Changer</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            transition: background-color 0.5s ease;
+            background-color: #f0f0f0;
+            /* Default mood */
+        }
+
+        .mood-controls button {
+            padding: 12px 25px;
+            font-size: 1.1em;
+            margin: 0 10px;
+            cursor: pointer;
+            border: none;
+            border-radius: 8px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+        }
+
+        .mood-controls button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        #happyBtn {
+            background-color: #FFD700;
+            color: #333;
+        }
+
+        /* Gold */
+        #sadBtn {
+            background-color: #6495ED;
+            color: white;
+        }
+
+        /* Cornflower Blue */
+        #excitedBtn {
+            background-color: #FF6347;
+            color: white;
+        }
+
+        /* Tomato */
+
+        #moodDisplay {
+            margin-top: 30px;
+            padding: 30px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        #currentMoodText {
+            font-size: 2em;
+            font-weight: bold;
+            color: #333;
+            /* Default mood text color */
+        }
+
+        #moodEmoji {
+            font-size: 3em;
+            margin-top: 10px;
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>The Mood Changer</h1>
+    <div class="mood-controls">
+        <button id="happyBtn" data-mood="Happy" data-color="#FFFACD" data-emoji="😊"
+            data-text-color="#333">Happy</button>
+        <button id="sadBtn" data-mood="Sad" data-color="#ADD8E6" data-emoji="😢" data-text-color="#333">Sad</button>
+        <button id="excitedBtn" data-mood="Excited" data-color="#FFA07A" data-emoji="🎉"
+            data-text-color="#333">Excited</button>
+    </div>
+
+    <div id="moodDisplay">
+        <span id="currentMoodText">Current Mood: Neutral</span>
+        <span id="moodEmoji">😐</span>
+    </div>
+
+    <script>
+        // Homework JavaScript starts here!
+        // 1. Select all necessary DOM elements:
+        //    - The mood buttons (e.g., using document.querySelectorAll or individual IDs)
+        //    - The div for displaying the current mood text
+        //    - The span for displaying the mood emoji
+        //    - The document.body (to change its background color)
+
+        // 2. Create a function, let's call it `changeMood`.
+        //    - This function will take parameters like moodName, backgroundColor, emoji, textColor.
+        //    - Inside this function:
+        //        a. Update the textContent of the mood display div.
+        //        b. Update the textContent of the emoji span.
+        //        c. Update the document.body.style.backgroundColor.
+        //        d. (Optional) Update the moodDisplay's text color for better contrast if needed.
+
+        // 3. Add 'click' event listeners to each mood button:
+        //    - When a button is clicked, get the mood details (mood name, color, emoji)
+        //      from its data-* attributes (e.g., event.target.dataset.mood).
+        //    - Call your `changeMood` function with these details.
+
+        // 4. (Optional) Set an initial mood when the page loads by calling `changeMood` once.
+    </script>
+</body>
+
+</html>
