@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .switch {
+            width: 100px;
+            height: 100px;
+            background-color: grey;
+            color: white;
+            text-align: center;
+            border: 2px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="light-switch" class="switch">OFF</div>
+    <script>
+        const lightSwitch = document.getElementById("light-switch");
+
+        lightSwitch.addEventListener("click", function (event) {
+            const currentSwitch = event.target;
+
+            if (currentSwitch.textContent === "OFF") {
+                currentSwitch.textContent = "ON";
+                currentSwitch.style.backgroundColor = "yellow";
+                currentSwitch.style.color = "black";
+            } else {
+                currentSwitch.textContent = "OFF";
+                currentSwitch.style.backgroundColor = "grey";
+                currentSwitch.style.color = "white";
+            }
+        });
+    </script>
+</body>
+
+</html>

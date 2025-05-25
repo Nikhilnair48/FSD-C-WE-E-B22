@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #pad {
+            border: 2px solid black;
+            width: 400px;
+            height: 300px;
+            margin: 20px auto;
+            position: relative;
+            cursor: crosshair;
+        }
+
+        #pad:hover {
+            background: #D3D3D3;
+        }
+
+        #palette {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        #colors span {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            margin: 0 5px;
+            border: 1px solid black;
+            cursor: pointer;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        .dot {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: red;
+            border-radius: 50%;
+            pointer-events: none;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Paint Pad</h2>
+    <div id="palette">
+        Pick color:
+        <div id="colors">
+            <span style="background: red;" data-color="red"></span>
+            <span style="background: blue;" data-color="blue"></span>
+            <span style="background: green;" data-color="green"></span>
+            <span style="background: yellow;" data-color="yellow"></span>
+        </div>
+    </div>
+    <div id="pad"></div>
+
+    <script>
+        const pad = document.getElementById("pad");
+        // default: user is not drawing
+        let drawing = false;
+        // default: brush color is red
+        let brushColor = "red";
+
+        const colors = document.getElementById("colors");
+        colors.addEventListener("click", function (event) {
+            console.log(event);
+            if (!event.target.dataset.color) return;
+            brushColor = event.target.dataset.color;
+            console.log(brushColor);
+        });
+
+        pad.addEventListener("mousedown", () => {
+            drawing = true;
+        });
+        pad.addEventListener("mouseup", () => {
+            drawing = false;
+        });
+        pad.addEventListener("mouseleave", () => drawing = false);
+
+        pad.addEventListener("mousemove", (event) => {
+            if (!drawing) return;
+            const dot = document.createElement("div");
+            dot.className = "dot";
+            dot.style.background = brushColor;
+            dot.style.left = event.offsetX + "px";
+            dot.style.top = event.offsetY + "px";
+            pad.appendChild(dot);
+        })
+
+        pad.addEventListener("dblclick", () => pad.innerHTML = "")
+    </script>
+</body>
+
+</html>

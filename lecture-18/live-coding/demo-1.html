@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="button">Click Me!</button>
+    <p id="status">Waiting for a click...</p>
+
+    <script>
+        const button = document.getElementById("button");
+        const status = document.getElementById("status");
+
+        function handleButtonClick() {
+            status.textContent = "Button Clicked!";
+            button.textContent = "Clicked!";
+            button.style.backgroundColor = "green";
+        }
+
+        button.addEventListener('click', handleButtonClick);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        form {
+            width: 300px;
+            margin: 20px auto;
+        }
+
+        textarea,
+        input,
+        button {
+            display: block;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+
+        textarea {
+            height: 100px;
+        }
+
+        #preview {
+            border: 1px solid black;
+            padding: 10px;
+            margin: 20px auto;
+            width: 300px;
+            background: #D3D3D3;
+        }
+
+        #posts {
+            width: 300px;
+            margin: 20px auto;
+        }
+
+        .post {
+            border-bottom: 1px solid black;
+            padding: 5px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <h2 style="text-align: center;">Preview & Submit</h2>
+    <form id="postForm">
+        <textarea id="textarea" placeholder="Type your text"></textarea>
+        <label>
+            Font size
+            <input type="range" id="size" min="12" max="30" value="16" />
+        </label>
+        <button type="submit">Post it!</button>
+    </form>
+    <div id="preview"></div>
+    <div id="posts"></div>
+
+    <script>
+        const textArea = document.getElementById("textarea");
+        const size = document.getElementById("size");
+        const preview = document.getElementById("preview");
+        const postForm = document.getElementById("postForm");
+        const posts = document.getElementById("posts");
+
+        textArea.addEventListener("input", () => {
+            preview.innerHTML = textArea.value;
+        });
+
+        size.addEventListener("change", () => {
+            preview.style.fontSize = size.value + "px";
+        });
+
+        postForm.addEventListener("submit", (event) => {
+            event.preventDefault();
+            const post = document.createElement("div");
+            post.className = "post";
+            post.innerHTML = preview.innerHTML;
+            posts.prepend(post);
+
+            textArea.value = "";
+            preview.innerHTML = "";
+        })
+
+    </script>
+</body>
+
+</html>

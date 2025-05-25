@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #arena {
+            width: 400px;
+            height: 300px;
+            border: 2px solid black;
+            margin: 20px auto;
+            position: relative;
+            background: white;
+        }
+
+        #box {
+            width: 30px;
+            height: 30px;
+            background: greenyellow;
+            position: absolute;
+            top: 135px;
+            left: 185px;
+        }
+    </style>
+</head>
+
+<body>
+    <h2 style="text-align: center;">Box Runner</h2>
+    <div id="arena">
+        <div id="box"></div>
+    </div>
+    <p style="text-align: center;">Use left, right, up and down to move.</p>
+
+    <script>
+        const step = 10;
+        const box = document.getElementById("box");
+
+        window.addEventListener("keydown", (event) => {
+            console.log(event);
+            // destructuring
+            let { top, left } = box.getBoundingClientRect();
+            const arena = box.parentElement.getBoundingClientRect();
+
+            // we need to handle arrow up, down, left, right
+            switch (event.key) {
+                case "ArrowLeft":
+                    // left is either 1) left - step 2) parent container's left offset
+                    left = Math.max(left - step, arena.left);
+                    box.style.left = (left - arena.left) + "px";
+                    break;
+                case "ArrowRight":
+                    left = Math.min(left + step, arena.right - box.clientWidth);
+                    box.style.left = (left - arena.left) + "px";
+                    break;
+                case "ArrowUp":
+                    top = Math.max(top - step, arena.top);
+                    box.style.top = (top - arena.top) + "px";
+                    break;
+                case "ArrowDown":
+                    top = Math.min(top + step, arena.bottom - box.clientHeight);
+                    box.style.top = (top - arena.top) + "px";
+            }
+        })
+
+    </script>
+</body>
+
+</html>
