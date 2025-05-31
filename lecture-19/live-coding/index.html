@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cosmic Tic-Tac-Toe</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* player x styles w/ animation */
+        .player-x {
+            color: #ec4899;
+            text-shadow: 0 0 8px #ec4899, 0 0 12px #ec4899;
+        }
+
+        .player-o {
+            color: #2dd4bf;
+            text-shadow: 0 0 8px #2dd4bf, 0 0 12px #2dd4bf;
+        }
+
+        @keyframes winning-cell-glow {
+            0% {
+                background-color: rgba(250, 204, 21, 0.2);
+            }
+
+            50% {
+                background-color: rgba(250, 204, 21, 0.4);
+            }
+
+            100% {
+                background-color: rgba(250, 204, 21, 0.2);
+            }
+        }
+
+        .winning-cell {
+            animation: winning-cell-glow 1.5s infinite ease-in-out;
+        }
+
+        @keyframes status-fade-in {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .status-message-active {
+            animation: status-fade-in 0.3s ease-out forwards;
+        }
+    </style>
+</head>
+
+<body class="bg-slate-900 text-slate-100 min-h-screen flex flex-col items-center justify-center p-4">
+    <header class="mb-8 text-center">
+        <h1 class="text-5xl font-bold">
+            <span class="player-x">Cosmic</span>
+            <span class="player-o">Clash</span>
+        </h1>
+        <p class="text-lg text-slate-400">Tic-Tac-Toe</p>
+    </header>
+
+    <div id="game-container" class="w-full max-w-xs sm:max-w-sm">
+        <div id="status-area" class="h-12 mb-6 text-center">
+            <p class="text-2xl font-semibold">Player X's turn</p>
+        </div>
+        <div id="game-board"
+            class="grid grid-cols-3 gap-2 aspect-square border border-slate-700 rounded-md p-2 bg-slate-950/30">
+        </div>
+        <div class="mt-8 text-center">
+            <button id="restart-button" class="bg-pink-600 text-white font-bold py-3 px-4 rounded-lg text-xl 
+            bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700">Restart
+                Button</button>
+        </div>
+    </div>
+    <script>
+        const boardElement = document.getElementById("game-board");
+        const statusElement = document.getElementById("status-area");
+        const restartButton = document.getElementById("restart-button");
+
+
+        // Game state
+        let board = ["", "", "", "", "", "", "", "", ""];
+        let currentPlayer = "X";
+        let gameActive = true;
+
+        // 
+        const winningConditions = [
+            [0, 1, 2], [3, 4, 5], [6, 7, 8],    // rows
+            [0, 3, 6], [1, 4, 7], [2, 5, 6],    // columns
+            [0, 4, 8], [2, 4, 6]
+        ]
+
+        function updateStatusDisplay(message) {
+            statusElement.textContent = message;
+        }
+
+        function switchPlayer() {
+            // ternary operator   
+            // condition: if currentPlayer === "X" -> change currentPlayer to "O" else currentPlayer to "X"
+            currentPlayer = currentPlayer === "X" ? "O" : "X";
+            updateStatusDisplay("Player " + currentPlayer + "'s turn");
+        }
+
+        // game is over or not -> boolean -> true/false
+        function checkResult() {
+            let roundWon = false;
+            let winningCondition = null;
+
+            for (let i = 0; i < winningConditions.length; i++) {
+                const winCondition = winningConditions[i];  // [0,1,2]
+                const a = board[winCondition[0]];
+                const b = board[winCondition[1]];
+                const c = board[winCondition[2]];
+
+                if (a === "" || b === "" || c === "") {
+                    continue;
+                }
+                // a => X, b => X, c => X
+                if (a === b && b === c) {
+                    roundWon = true;
+                    winningCondition = winCondition;
+                    break;
+                }
+            }
+
+            if (roundWon) {
+                updateStatusDisplay("Player " + currentPlayer + "wins!");
+                gameActive = false;
+                winningCondition.forEach(index => {
+                    const cell = boardElement.querySelector(`.cell[data-cell-index="${index}"]`)
+                    if (cell) {
+                        cell.classList.add("winning-cell");
+                    }
+                });
+                return true;
+            }
+
+            const roundDraw = !board.includes("");
+            if (roundDraw) {
+                updateStatusDisplay("Draw game!");
+                gameActive = false;
+                return true;
+            }
+
+            return false;
+        }
+
+        function handleCellPlayed(clickedCell, cellIndex) {
+            board[cellIndex] = currentPlayer;
+
+            const markElement = document.createElement("span");
+            markElement.textContent = currentPlayer;
+            // TODO: define a cell-content class class
+            markElement.classList.add("cell-content");
+            if (currentPlayer === "X") {
+                markElement.classList.add("player-x");
+            } else {
+                markElement.classList.add("player-o");
+            }
+
+            clickedCell.innerHTML = "";
+            clickedCell.appendChild(markElement);
+        }
+
+        /*
+            handle the click
+            determine the target (event.target)
+        */
+        function handleCellClick(event) {
+            const clickedCell = event.target;
+            const cellIndex = parseInt(clickedCell.getAttribute("data-cell-index"));
+
+            if (board[cellIndex] !== "" || !gameActive) {
+                return;
+            }
+
+            handleCellPlayed(clickedCell, cellIndex);
+            const gameHasEnded = checkResult();
+            if (!gameHasEnded) {
+                switchPlayer();
+            }
+
+        }
+
+        /*
+            Create the game board and the cells dynamically. Add to DOM
+        */
+        function createBoard() {
+            boardElement.innerHTML = "";
+
+            for (let i = 0; i < 9; i++) {
+                const cell = document.createElement("div");
+
+                cell.classList.add(
+                    "cell",
+                    "bg-slate-800", "rounded", "flex", "items-center",
+                    "justify-center", "text-4xl", "font-bold",
+                    "hover:bg-slate-700/80", "transition-colors", "duration-150",
+                    "shadow-md", "aspect-square", "border", "border-slate-700/50"
+                );
+
+                cell.setAttribute("data-cell-index", i);
+                cell.addEventListener("click", handleCellClick);
+                boardElement.appendChild(cell);
+            }
+        }
+
+        // listen for a DOM specific event
+        document.addEventListener("DOMContentLoaded", function () {
+            createBoard();
+            restartButton.addEventListener("click", restartGame);
+        });
+
+        function restartGame() {
+            board = ["", "", "", "", "", "", "", "", ""];
+            currentPlayer = "X";
+            gameActive = true;
+
+            updateStatusDisplay("Play X's turn");
+        }
+    </script>
+</body>
+
+</html>
