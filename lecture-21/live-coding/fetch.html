@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch User Retrieval</title>
+</head>
+
+<body>
+    <button id="fetchUserBtn">Fetch User Data</button>
+    <div id="userCard" style="border: 1px solid black; padding: 15px">
+
+    </div>
+    <script>
+        const fetchBtn = document.getElementById("fetchUserBtn");
+        const userCard = document.getElementById("userCard");
+
+        function fetchAndDisplayUser(userId) {
+            try {
+                // Javascript Template Literals is used to create the constant apiUrl
+                // Reference: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals
+                const apiUrl = `https://jsonplaceholder.typicode.com/users/${userId}`;
+
+
+                // By default, fetch makes a GET request. So, we use the optional second parameter
+                // Useful reference for fetch: 
+                //  https://learnjavascript.online/topics/fetch.html, https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API
+                fetch(apiUrl)
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error("User not found (Status: " + response.status + ")");
+                        }
+                        return response.json();
+                    })
+                    .then(user => {
+                        userCard.innerHTML = `
+                            <h3>${user.name} (@${user.username})</h3>
+                            <p><strong>Email: </strong> ${user.email} </p>
+                            <p><strong>Website: </strong> <a href="http://${user.website}" target="_blank">${user.website}</a>  </p>
+                        `
+                    })
+
+            } catch (error) {
+                console.error("Failed to fetch user", error.message);
+            }
+
+        }
+
+        fetchBtn.addEventListener("click", () => {
+            fetchAndDisplayUser(10);
+        })
+
+    </script>
+</body>
+
+</html>

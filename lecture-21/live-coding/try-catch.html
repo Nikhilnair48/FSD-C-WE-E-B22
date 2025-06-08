@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Try Catch Example</title>
+</head>
+
+<body>
+    <div id="statusMessage" style="color: blue; font-size: 24px; font-weight: bold;"></div>
+
+    <script>
+        function processUserData(userJsonString) {
+            const statusDiv = document.getElementById("statusMessage");
+
+            try {
+                const user = JSON.parse(userJsonString);
+                if (!user.name) {
+                    throw new Error("Invalid user name");
+                }
+                console.log("typeof user.age " + typeof user.age);
+                if (typeof user.age !== "number") {
+                    throw new Error("Invalid user age");
+                }
+                statusDiv.textContent = `Successfully processed user data. Name: ${user.name} Age: ${user.age}`;
+            } catch (error) {
+                console.error("An error occurred:", error.message);
+                statusDiv.innerHTML = `Error: ${error.message}`;
+            } finally {
+                console.log("=====Processing complete========");
+            }
+        }
+        const user = {
+            name: "Alice",
+            age: 30
+        }
+
+        // Javascript object converted to JSON
+        // Looks like this: {"name":"Alice","age":30}
+        const validInput = JSON.stringify(user);
+
+        // Uncomment each of the scenarios below and run the code in the browser to view the outcome
+
+        // 1. happy path
+        processUserData(validInput);
+
+        // 2. invalid input: notice the extra comma after "}"
+        // processUserData('{"name":"Alice"},');
+
+        // 3. testing missing age property
+        // processUserData('{"name":"Alice"}');
+
+        // 4. testing missing name property
+        // processUserData('{"age": 30}');
+
+        // 5. testing incorrect data type for age
+        // processUserData('{"name": "Alice", "age": "30"}');
+    </script>
+</body>
+
+</html>
