@@ -40,7 +40,7 @@
         </h1>
 
         <!-- Message box to inform user of any errors from character creation or update -->
-        <div id="messagebox" class="p-4 rounded-lg mb-6 shadow-md hidden">
+        <div id="messageBox" class="p-4 rounded-lg mb-6 shadow-md hidden">
             <p id="messageText" class="font-medium"></p>
         </div>
 
@@ -80,6 +80,7 @@
                         class="p-3 border border-gray-300 rounded-md
                     focus:outline-none focus:border-purple-300 focus:ring-2 focus:ring-purple-300 bg-white text-gray-800 shadow-sm">
                 </div>
+                <input type="hidden" id="editingCharacter">
             </div>
             <button id="submitCharacterBtn"
                 class="w-full mt-8 bg-white text-purple-700 font-bold py-3 px-6 rounded-md hover:bg-purple-100 hover:text-indigo-800 transition-all shadow-lg focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-purple-600">
@@ -124,14 +125,16 @@
         const heroesRosterDiv = document.getElementById("heroesRoster");
         const monstersDenDiv = document.getElementById("monstersDen");
 
-        const messageBox = document.getElementById("messagebox");
+        const messageBox = document.getElementById("messageBox");
         const messageText = document.getElementById("messageText");
         const loadingIndicator = document.getElementById("loadingIndicator");
+
+        const editingCharacterIdInput = document.getElementById("editingCharacter");
 
         let heroes = [];
         let monsters = [];
         // editing? which character is being edited
-        let editignCharacterId = null;
+        let editingCharacterId = null;
 
         // Will be incremented every time a new character is created
         let nextCharacterId = 1;
@@ -144,9 +147,38 @@
                 health: 100,
                 attack: 20,
                 type: "Hero",
-                icon: "🦸"
+                icon: "🦸",
+                maxHealth: 100
             }
         */
+
+        /**
+         * Save the current state of heros and monsters
+        */
+        function saveDataToLocalStorage() {
+            // JSON.stringify
+            try {
+                localStorage.setItem("heroesData", JSON.stringify(heroes));
+                localStorage.setItem("monstersData", JSON.stringify(monsters));
+            } catch (error) {
+                showMessage("Error saving data to cache. Storage might be full.", "error");
+                console.error(error);
+            }
+
+        }
+
+        function getDataToLocalStorage() {
+            const savedHeroes = localStorage.getItem("heroesData");
+            const savedMonsters = localStorage.getItem("monstersData");
+
+            if (savedHeroes) {
+                heroes = JSON.parse(savedHeroes);
+            }
+
+            if (savedMonsters) {
+                monsters = JSON.parse(savedMonsters);
+            }
+        }
 
         /*
             Create an HTML div element representing a single character card
@@ -159,6 +191,7 @@
             // set the id for the character in the dom
             card.id = `character-${character.id}`;
             // apply any styles
+            // ternary operator
             const backgroundStyle = character.type === "Hero" ?
                 "bg-green-100 border-green-400" : "bg-red-100 border-red-400";
             card.className = `character-card p-5 rounded-lg shadow-md mb-4 border-2 ${backgroundStyle}`;
@@ -166,19 +199,20 @@
             // create the inner html
             card.innerHTML = `
                 <div class="flex items-center mb-3">
-                    <span class="text-4xl mr-3">🛡️</span>
+                    <span class="text-4xl mr-3">${character.icon}</span>
                     <h3 class="text-2xl font-bold ${character.type === 'Hero' ? 'text-green-800' : 'text-red-800'}">
-                        name
+                        ${character.name}
                     </h3>
                 </div>
-                <p class="text-gray-700">Health: <span id="health-${character.id}" class="font-semibold">health</span> / maxHealth
+                <p class="text-gray-700">Health: <span id="health-${character.id}" class="font-semibold">${character.health}</span> / ${character.maxHealth}
                 </p>
                 <!-- Health Bar -->
                 <div class="w-full bg-gray-300 rounded-full h-3 mt-1 mb-3 overflow-hidden">
-                    <div class="h-full rounded-full bg-green-500" style="width: 90px">
+                    <div class="h-full rounded-full ${character.health > 70 ? 'bg-green-500' : 'bg-red-500'}"
+                        style="width: ${(character.health / character.maxHealth) * 100}">
                     </div>
                 </div>
-                <p class="text-gray-700 mb-4">Attack: <span class="font-semibold">attack</span></p>
+                <p class="text-gray-700 mb-4">Attack: <span class="font-semibold">${character.attack}</span></p>
                 <div class="mt-4 flex flex-col sm:flex-row gap-2">
                     <button data-id="${character.id}" data-action="edit"
                         class="flex-1 bg-purple-500 text-white px-4 py-2 rounded-md hover:bg-purple-600 transition-colors text-sm font-semibold shadow-sm">
@@ -227,6 +261,8 @@
             const attack = parseInt(characterAttackInput.value);
             const type = characterTypeInput.value;
             const icon = characterIconInput.value;
+            // If this value exists, we're in edit mode
+            const currentId = editingCharacterIdInput.value;
 
             // Input validation
             // TODO: this validation is incomplete; what's missing?
@@ -234,6 +270,7 @@
                 showMessage("Please enter a valid name, health, attack & icon", "error");
             }
 
+            loadingIndicator.classList.remove("hidden");
             // disable the button while processing            
             submitCharacterBtn.disabled = true;
 
@@ -243,27 +280,55 @@
                     name,
                     health,
                     attack,
+                    maxHealth: 100,
                     type,
                     icon
                 };
 
-                let responseCharacter = await simulateCharacterAPI(characterData, true);
-                if (responseCharacter.type === "Hero") {
-                    heroes.push(responseCharacter);
+                // Handle edit character
+                if (currentId) {
+                    characterData.id = parseInt(currentId);
+                    let responseCharacter = await simulateCharacterAPI(characterData, false);
+                    const originalCharacter = heroes.find(hero => hero.id === responseCharacter.id)
+                        || monsters.find(monster => monster.id === responseCharacter.id);
+                    if (originalCharacter) {
+                        if (originalCharacter.type === "Hero") {
+                            // filter from heros the character w/ responseCharacter.id
+                            heroes = heroes.filter(hero => hero.id !== responseCharacter.id);
+                        } else {
+                            monsters = monsters.filter(monster => monster.id !== responseCharacter.id);
+                        }
+                    }
+
+                    if (responseCharacter.type === "Hero") {
+                        heroes.push(responseCharacter);
+                    } else {
+                        monsters.push(responseCharacter);
+                    }
+
                 } else {
-                    monsters.push(responseCharacter);
+                    let responseCharacter = await simulateCharacterAPI(characterData, true);
+                    if (responseCharacter.type === "Hero") {
+                        heroes.push(responseCharacter);
+                    } else {
+                        monsters.push(responseCharacter);
+                    }
+
+                    // template literal
+                    // Eg: "Superman (Hero) created!"
+                    showMessage(`${responseCharacter.name} (${responseCharacter.type}) created! `, "success");
                 }
 
-                // template literal
-                // Eg: "Superman (Hero) created!"
-                showMessage(`${responseCharacter.name} (${responseCharacter.type}) created! `, "success");
 
                 renderCharacters();
                 resetForm();
+                saveDataToLocalStorage();
             } catch (error) {
                 showMessage(`Error: ${error.message}`);
             } finally {
                 submitCharacterBtn.disabled = false;
+                loadingIndicator.classList.add("hidden");
+
             }
         }
 
@@ -290,7 +355,7 @@
                     } else {
                         reject(new Error("Failed to process character data. Please try again."));
                     }
-                }, 3000);
+                }, 1000);
             })
         }
 
@@ -311,7 +376,20 @@
         */
         // Homework for June 14th
         function resetForm() {
+            // set the user facing fields to empty
+            characterNameInput.value = "";
+            characterHealthInput.value = "";
+            characterAttackInput.value = "";
+            characterTypeInput.value = "Hero";
+            characterIconInput.value = "";
+            formTitle.textContent = "Add New Character";
+            submitCharacterBtn.textContent = "Create Character";
 
+            // hidden elements
+            editingCharacterIdInput.value = "";
+
+            // JS state variable
+            editingCharacterId = null;
         }
 
         /**
@@ -320,6 +398,25 @@
          *  @params {'info' | 'success' | 'error' } info - The type of the message (can be used for styling)
         */
         function showMessage(msg, type = "info") {
+            messageText.textContent = msg;
+            messageBox.className = "p-4 rounded-lg mb-6 shadow-md";
+
+            // success
+            if (type === "success") {
+                messageBox.classList.add("bg-green-100", "border-l-4", "border-green-500", "text-green-700");
+            } else if (type === "error") {
+                // error
+                messageBox.classList.add("bg-red-100", "border-l-4", "border-red-500", "text-red-700");
+            } else {
+                // info
+                messageBox.classList.add("bg-blue-100", "border-l-4", "border-blue-500", "text-blue-700");
+            }
+            messageBox.classList.remove("hidden");
+
+            // Hide the message after 3 seconds
+            setTimeout(() => {
+                messageBox.classList.add("hidden");
+            }, 3000);
 
         }
 
@@ -329,7 +426,24 @@
          * @params id - the ID of the character to delete
         */
         function deleteCharacter(id) {
+            // confirm whether user wants to delete?
+            if (!confirm("Are you sure you want to delete this character? This action cannot be undone")) {
+                return;
+            }
 
+            // determine the character to be deleted
+            heros = heroes.filter(hero => hero.id !== id);
+            monsters = monsters.filter(monster => monster.id !== id);
+
+            // remove the card from DOM
+            const cardToRemove = document.getElementById(`character-${id}`);
+            if (cardToRemove) {
+                cardToRemove.remove(); // remove the card from DOM
+                showMessage("Character successfully deleted!", "success");
+                saveDataToLocalStorage();
+            } else {
+                showMessage("Character not found for deletion", "error");
+            }
         }
 
 
@@ -338,7 +452,30 @@
          * @params id - the ID of the character to edit
         */
         function editCharacter(id) {
+            // combine the heros and monsters array so that it's easy to search
+            // find the id in the array
+            const characterToEdit = [...heroes, ...monsters].find(character => character.id === id);
+            if (characterToEdit) {
+                // Populate the UI fields
+                characterNameInput.value = characterToEdit.name;
+                characterHealthInput.value = characterToEdit.health;
+                characterAttackInput.value = characterToEdit.attack;
+                characterTypeInput.value = characterToEdit.type;
+                characterIconInput.value = characterToEdit.icon;
 
+                // Set the hidden dom element's value to id
+                editingCharacterIdInput.value = characterToEdit.id;
+                // Set the global JS variable's value to id
+                editingCharacterId = characterToEdit.id;
+
+                // change form header and button
+                formTitle.textContent = `Editing ${characterToEdit.name}`;
+                submitCharacterBtn.textContent = "Save Changes";
+
+                showMessage(`Editing ${characterToEdit.name}. Make changes and click 'Save Changes'`, "info")
+            } else {
+                showMessage("Character was not found for editing.", "error")
+            }
         }
 
         /**
@@ -346,7 +483,15 @@
          * @param  event - the click Event object
         */
         function handleCharacterCardAction(event) {
+            const target = event.target;
+            const action = target.dataset.action;   // data-action attribute (edit/delete)
+            const characterId = parseInt(target.dataset.id);
 
+            if (action === "edit") {
+                editCharacter(characterId);
+            } else {
+                deleteCharacter(characterId);
+            }
         }
 
 
@@ -354,7 +499,10 @@
         monstersDenDiv.addEventListener("click", handleCharacterCardAction);
 
         submitCharacterBtn.addEventListener("click", addOrUpdateCharacter);
-        document.addEventListener("DOMContentLoaded", renderCharacters);
+        document.addEventListener("DOMContentLoaded", () => {
+            getDataToLocalStorage();
+            renderCharacters();
+        });
 
     </script>
 
