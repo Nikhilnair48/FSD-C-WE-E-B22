@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hero & Monster Management System</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: "Inter", 'Courier New', Courier, monospace;
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .character-card {
+            transition: transform 0.2s ease-in-out, box-shadow 0.2 ease-in-out, opacity 0.3 ease-in-out;
+            transform-origin: center;
+        }
+
+        .character-card:hover {
+            transform: scale(1.03);
+            box-shadow: 0 10x 15px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+
+<body class="bg-gradient-to-br from-indigo-50 to-purple-100 p-4 flex items-start justify-center">
+
+    <div class="container mx-auto bg-white rounded-xl shadow-2xl p-8 mb-8 border border-gray-200">
+        <h1 class="text-5xl font-extrabold text-center text-indigo-800">
+            Hero & Monster Manager
+        </h1>
+
+        <!-- Message box to inform user of any errors from character creation or update -->
+        <div id="messagebox" class="p-4 rounded-lg mb-6 shadow-md hidden">
+            <p id="messageText" class="font-medium"></p>
+        </div>
+
+        <section class="mt-4 mb-10 p-8 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-lg shadow-xl">
+            <h2 id="formTitle" class="text-3xl font-bold text-white mb-6 text-center">Add New Character</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="input-group">
+                    <label for="characterName" class="text-white text-sm font-semibold">Name</label>
+                    <input type="text" id="characterName"
+                        class="p-3 border border-gray-300 rounded-md
+                    focus:outline-none focus:border-purple-300 focus:ring-2 focus:ring-purple-300 bg-white text-gray-800 shadow-sm">
+                </div>
+                <div class="input-group">
+                    <label for="characterHealth" class="text-white text-sm font-semibold">Health</label>
+                    <input type="text" id="characterHealth"
+                        class="p-3 border border-gray-300 rounded-md
+                    focus:outline-none focus:border-purple-300 focus:ring-2 focus:ring-purple-300 bg-white text-gray-800 shadow-sm">
+                </div>
+                <div class="input-group">
+                    <label for="characterAttack" class="text-white text-sm font-semibold">Attack Power</label>
+                    <input type="text" id="characterAttack"
+                        class="p-3 border border-gray-300 rounded-md
+                    focus:outline-none focus:border-purple-300 focus:ring-2 focus:ring-purple-300 bg-white text-gray-800 shadow-sm">
+                </div>
+                <div class="input-group">
+                    <label for="characterType" class="text-white text-sm font-semibold">Character Type</label>
+                    <select type="text" id="characterType"
+                        class="p-3 border border-gray-300 rounded-md
+                    focus:outline-none focus:border-purple-300 focus:ring-2 focus:ring-purple-300 bg-white text-gray-800 shadow-sm">
+                        <option value="Hero">Hero</option>
+                        <option value="Monster">Monster</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label for="characterIcon" class="text-white text-sm font-semibold">Character Icon</label>
+                    <input type="text" id="characterIcon"
+                        class="p-3 border border-gray-300 rounded-md
+                    focus:outline-none focus:border-purple-300 focus:ring-2 focus:ring-purple-300 bg-white text-gray-800 shadow-sm">
+                </div>
+            </div>
+            <button id="submitCharacterBtn"
+                class="w-full mt-8 bg-white text-purple-700 font-bold py-3 px-6 rounded-md hover:bg-purple-100 hover:text-indigo-800 transition-all shadow-lg focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-purple-600">
+                Create Character
+            </button>
+            <div id="loadingIndicator" class="hidden text-center mt-4 text-white font-medium text-lg">
+                Processing... please wait!
+            </div>
+        </section>
+
+        <section class="flex flex-col lg:flex-row gap-8">
+            <!-- Heroes Roster -->
+            <div class="flex-1 bg-green-50 p-6 rounded-xl shadow-inner border-2 border-green-300">
+                <h2>Heroes Roster</h2>
+                <div id="heroesRoster" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4">
+
+
+                </div>
+            </div>
+            <!-- Monsters Den -->
+            <div class="flex-1 bg-green-50 p-6 rounded-xl shadow-inner border-2 border-green-300">
+                <h2>Monsters Den</h2>
+                <div id="monstersDen" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4"></div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+
+        // ============= GLOBAL VARIABLES =============
+        // Will be used to update the form header for create/edit
+        const formTitle = document.getElementById("formTitle");
+        // Constants to fetch details from the input fields
+        const characterNameInput = document.getElementById("characterName");
+        const characterHealthInput = document.getElementById("characterHealth");
+        const characterAttackInput = document.getElementById("characterAttack");
+        const characterTypeInput = document.getElementById("characterType");
+        const characterIconInput = document.getElementById("characterIcon");
+        const submitCharacterBtn = document.getElementById("submitCharacterBtn");
+
+        // Will be used to show the heroes and monsters to the user
+        const heroesRosterDiv = document.getElementById("heroesRoster");
+        const monstersDenDiv = document.getElementById("monstersDen");
+
+        const messageBox = document.getElementById("messagebox");
+        const messageText = document.getElementById("messageText");
+        const loadingIndicator = document.getElementById("loadingIndicator");
+
+        let heroes = [];
+        let monsters = [];
+        // editing? which character is being edited
+        let editignCharacterId = null;
+
+        // Will be incremented every time a new character is created
+        let nextCharacterId = 1;
+
+        /*
+            Character object structure
+            {
+                id: "1234",
+                name: "Name",
+                health: 100,
+                attack: 20,
+                type: "Hero",
+                icon: "🦸"
+            }
+        */
+
+        /*
+            Create an HTML div element representing a single character card
+            @param chracter - character object to render
+            @returns The character card DOM element
+        */
+        function createCharacterCard(character) {
+            // create a div for the character card
+            const card = document.createElement("div");
+            // set the id for the character in the dom
+            card.id = `character-${character.id}`;
+            // apply any styles
+            const backgroundStyle = character.type === "Hero" ?
+                "bg-green-100 border-green-400" : "bg-red-100 border-red-400";
+            card.className = `character-card p-5 rounded-lg shadow-md mb-4 border-2 ${backgroundStyle}`;
+
+            // create the inner html
+            card.innerHTML = `
+                <div class="flex items-center mb-3">
+                    <span class="text-4xl mr-3">🛡️</span>
+                    <h3 class="text-2xl font-bold ${character.type === 'Hero' ? 'text-green-800' : 'text-red-800'}">
+                        name
+                    </h3>
+                </div>
+                <p class="text-gray-700">Health: <span id="health-${character.id}" class="font-semibold">health</span> / maxHealth
+                </p>
+                <!-- Health Bar -->
+                <div class="w-full bg-gray-300 rounded-full h-3 mt-1 mb-3 overflow-hidden">
+                    <div class="h-full rounded-full bg-green-500" style="width: 90px">
+                    </div>
+                </div>
+                <p class="text-gray-700 mb-4">Attack: <span class="font-semibold">attack</span></p>
+                <div class="mt-4 flex flex-col sm:flex-row gap-2">
+                    <button data-id="${character.id}" data-action="edit"
+                        class="flex-1 bg-purple-500 text-white px-4 py-2 rounded-md hover:bg-purple-600 transition-colors text-sm font-semibold shadow-sm">
+                        Edit
+                    </button>
+                    <button data-id="${character.id}" data-action="delete"
+                        class="flex-1 bg-gray-500 text-white px-4 py-2 rounded-md hover:bg-gray-600 transition-colors text-sm font-semibold shadow-sm">
+                        Delete
+                    </button>
+                </div>
+            `;
+
+            // return the card
+            return card;
+        }
+
+        /**
+         *  Render all characters (heroes and monsters) into their respective division
+         * This will be used primarily for the "Read" operations
+         * 
+        */
+        function renderCharacters() {
+            heroesRosterDiv.innerHTML = "";
+            monstersDenDiv.innerHTML = "";
+
+            // Render the heros
+            heroes.forEach(hero => {
+                // first create the DOM element for the hero
+                const characterCard = createCharacterCard(hero);
+                heroesRosterDiv.appendChild(characterCard);
+            });
+            // Render the monsters
+            monsters.forEach(monster => {
+                monstersDenDiv.appendChild(createCharacterCard(monster));
+            })
+        }
+
+        /**
+         * Handle the creation or update of a character. 
+         * Will invoke APIs for add or update
+         *  
+        */
+        async function addOrUpdateCharacter() {
+            const name = characterNameInput.value;
+            const health = parseInt(characterHealthInput.value);
+            const attack = parseInt(characterAttackInput.value);
+            const type = characterTypeInput.value;
+            const icon = characterIconInput.value;
+
+            // Input validation
+            // TODO: this validation is incomplete; what's missing?
+            if (!name || health <= 0 || attack <= 0 || !icon) {
+                showMessage("Please enter a valid name, health, attack & icon", "error");
+            }
+
+            // disable the button while processing            
+            submitCharacterBtn.disabled = true;
+
+            try {
+                // internally, this sets key "name" and value is the variable name
+                let characterData = {
+                    name,
+                    health,
+                    attack,
+                    type,
+                    icon
+                };
+
+                let responseCharacter = await simulateCharacterAPI(characterData, true);
+                if (responseCharacter.type === "Hero") {
+                    heroes.push(responseCharacter);
+                } else {
+                    monsters.push(responseCharacter);
+                }
+
+                // template literal
+                // Eg: "Superman (Hero) created!"
+                showMessage(`${responseCharacter.name} (${responseCharacter.type}) created! `, "success");
+
+                renderCharacters();
+                resetForm();
+            } catch (error) {
+                showMessage(`Error: ${error.message}`);
+            } finally {
+                submitCharacterBtn.disabled = false;
+            }
+        }
+
+        /**
+         * Simulate a network request to create or update a character
+         * @param characterData - the character object we need to process
+         * @param isNew - True if it's new character creation; False for update
+         * @returns Promise<Object> - A promise that resolves with processed character
+         * or rejects with an error
+        */
+        function simulateCharacterAPI(characterData, isNew) {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    const isSuccess = Math.random() > 0.1;
+                    if (isSuccess) {
+                        const newId = generateUniqueId();
+                        const processedCharacter = {
+                            // spread operator
+                            ...characterData,
+                            // ternary operator
+                            id: isNew ? newId : characterData.id
+                        };
+                        resolve(processedCharacter);
+                    } else {
+                        reject(new Error("Failed to process character data. Please try again."));
+                    }
+                }, 3000);
+            })
+        }
+
+        /**
+         * Generate a simple uniqu ID for a character
+         * @returns A unique ID string
+        */
+        function generateUniqueId() {
+            const currentId = nextCharacterId;
+            // increase the value of Id by 1
+            nextCharacterId++;
+            return currentId;
+        }
+
+
+        /**
+         * Reset the user facing form for adding new character 
+        */
+        // Homework for June 14th
+        function resetForm() {
+
+        }
+
+        /**
+         * Display a message to the user in the message box
+         * @params msg - The message to display
+         *  @params {'info' | 'success' | 'error' } info - The type of the message (can be used for styling)
+        */
+        function showMessage(msg, type = "info") {
+
+        }
+
+
+        /**
+         * Delete a character from the heroes or monsters array and the DOM
+         * @params id - the ID of the character to delete
+        */
+        function deleteCharacter(id) {
+
+        }
+
+
+        /**
+         * Populate the form with a character's data for editing
+         * @params id - the ID of the character to edit
+        */
+        function editCharacter(id) {
+
+        }
+
+        /**
+         * Handle click events on buttons within character cards
+         * @param  event - the click Event object
+        */
+        function handleCharacterCardAction(event) {
+
+        }
+
+
+        heroesRosterDiv.addEventListener("click", handleCharacterCardAction);
+        monstersDenDiv.addEventListener("click", handleCharacterCardAction);
+
+        submitCharacterBtn.addEventListener("click", addOrUpdateCharacter);
+        document.addEventListener("DOMContentLoaded", renderCharacters);
+
+    </script>
+
+</body>
+
+</html>
