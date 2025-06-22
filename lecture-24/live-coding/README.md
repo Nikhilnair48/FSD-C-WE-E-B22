@@ -5,12 +5,13 @@
     - Exercise
 - Questions from class
 - Break
-- Quiz -> 11
-- JS Challenges -> 4
+- Quiz
 
-- Bug: why's character Id not incrementing?
+- Bug: Hero & Monster Manager
+    - Create a couple characters (heroes/monsters)
+    - Notice the unique Ids in the Elements tab in the Developer console & in Application tab
 
-# Spread
+## Spread
 
 The spread operator (...) expands an array or object into individual elements or properties
 
@@ -27,7 +28,7 @@ const merged = { ...obj1, ...obj2 };
 merged["a"]
 merged.b
 
-# Rest
+## Rest
 
 The rest operator (...) collects the remaining elements into an array(s) or object(s)
 
@@ -42,7 +43,7 @@ function sum(a, b, ...rest) {
 }
 sum(1,2,3,4,5);
 
-# Array Destructing
+## Array Destructing
 
 What's destructuring? Dismantle
 
@@ -58,7 +59,7 @@ const c = nums[2];  // 300
 // x = 1, y = 3
 const [x,,y] = [1,2,3];
 
-# Object Destructing
+## Object Destructing
 
 Lets you unpack properties of an object into variables with matching names
 
@@ -73,3 +74,4 @@ const { name, city } = person;
 const name = person.name;
 const city = person.city;
 -->
+
