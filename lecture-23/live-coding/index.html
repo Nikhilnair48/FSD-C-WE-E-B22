@@ -142,9 +142,9 @@
         /*
             Character object structure
             {
-                id: "1234",
+                id: 1,
                 name: "Name",
-                health: 100,
+                health: 80,
                 attack: 20,
                 type: "Hero",
                 icon: "🦸",
@@ -342,6 +342,7 @@
         function simulateCharacterAPI(characterData, isNew) {
             return new Promise((resolve, reject) => {
                 setTimeout(() => {
+                    // We're saying that our API will fail 10% of the time
                     const isSuccess = Math.random() > 0.1;
                     if (isSuccess) {
                         const newId = generateUniqueId();
@@ -432,7 +433,7 @@
             }
 
             // determine the character to be deleted
-            heros = heroes.filter(hero => hero.id !== id);
+            heroes = heroes.filter(hero => hero.id !== id);
             monsters = monsters.filter(monster => monster.id !== id);
 
             // remove the card from DOM
