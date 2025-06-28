@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Thrashing Demo</title>
+</head>
+
+<body>
+    <button id="runButton">Add 10,00,000 Elements</button>
+    <div id="container"></div>
+    <script>
+        const runBtn = document.getElementById("runButton");
+        const container = document.getElementById("container");
+
+        function createElements() {
+            // Starts a timer
+            console.time("DOM Thrashing has begun...");
+            for (let i = 0; i < 1000000; i++) {
+                const newEl = document.createElement("div");
+                // Element 1, Element 2....
+                newEl.textContent = `Element ${i + 1}`;
+                container.appendChild(newEl);
+            }
+            console.timeEnd("DOM Thrashing has ended.");
+        }
+        runBtn.addEventListener("click", createElements);
+
+    </script>
+</body>
+
+</html>
