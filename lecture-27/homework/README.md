@@ -19,7 +19,8 @@ Note: you may use the CSS classes in [Playlist.css](./my-react-project/src/compo
 2.  Convert the total duration from seconds into a more readable `minutes:seconds` format. For example, `301` seconds should be displayed something like `5m 1s`.
 3.  Display this calculated duration at the top of the playlist
 
-[UI Reference](./screenshots/task-1-reference.png)
+Reference:
+* [UI Reference](./screenshots/task-1-reference.png)
 
 **Hint:** This is the use case for the `Array.prototype.reduce()` method
 
@@ -38,9 +39,11 @@ To permit a user should to remove a song from the playlist, you will have to man
     * Pass the `handleRemoveSong` function down to each `SongItem` as a prop.
     * When the "Remove" button in `SongItem` is clicked, it should call the function it received from props, passing its own song's `id` back up to the parent.
 
-[UI Reference](./screenshots/task-2-reference.png)
-
 **Hint:** The `Array.prototype.filter()` method may be useful for removing an item from an array
+
+References:
+* [UI Reference](./screenshots/task-2-reference.png)
+* [Reading on lifting the state up in React](https://react.dev/learn/sharing-state-between-components)
 
 ---
 
