@@ -1,0 +1,119 @@
+.pokedex-container {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    width: 100%;
+    max-width: 1000px;
+    margin: 2rem auto;
+    padding: 1rem;
+}
+
+.pokedex-container h1 {
+    text-align: center;
+    font-size: 3rem;
+    color: #333;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+
+.search-bar {
+    display: block;
+    width: 100%;
+    max-width: 500px;
+    margin: 2rem auto;
+    padding: 12px 15px;
+    font-size: 1rem;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.pokemon-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 1rem;
+}
+
+.pokemon-card-simple {
+    text-align: center;
+    padding: 1rem;
+    background-color: black;
+    border-radius: 10px;
+    border: 1px solid #eee;
+    text-transform: capitalize;
+    font-weight: 600;
+}
+
+/* Styles for the refactored card in Stage 3 */
+.pokemon-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.8rem 1rem;
+    background-color: #f7f7f7;
+    border-radius: 10px;
+    border: 1px solid #eee;
+    transition: all 0.2s ease-in-out;
+}
+
+.pokemon-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-color: #ffcb05;
+    /* Pokémon Yellow */
+}
+
+.pokemon-name {
+    text-transform: capitalize;
+    font-weight: 600;
+    color: #3b4cca;
+    /* Pokémon Blue */
+}
+
+.favorite-button {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.favorite-button:hover {
+    transform: scale(1.3);
+}
+
+.favorites-section {
+    background-color: #fff;
+    padding: 1rem;
+    margin: 2rem 0;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.favorites-section h2 {
+    margin-top: 0;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 0.5rem;
+}
+
+.favorites-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    padding-top: 0.5rem;
+}
+
+.favorite-chip {
+    background-color: #ffcb05;
+    color: #3b4cca;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+.loading,
+.error {
+    text-align: center;
+    font-size: 1.5rem;
+    padding: 2rem;
+    color: #555;
+}
