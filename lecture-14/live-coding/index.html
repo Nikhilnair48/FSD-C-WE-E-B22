@@ -13,13 +13,15 @@
         <div class="mx-auto flex items-center justify-between px-6 py-4 md:px-10 max-w-full lg:max-w-[1600px]">
 
             <!-- Brand -->
-            <a href="#" class="text-2xl font-semibold tracking-wide w-48">Go Travel</a>
+            <a href="#" class="text-2xl font-bold tracking-wide">Go Travel</a>
 
-            <!-- hidden checkbox that toggles the hamburger menu on mobile -->
-            <input id="nav-toogle" type="checkbox" class="peer hidden" />
+            <!-- Hidden checkbox drives the hamburger → menu toggle  -->
+            <input id="nav-toggle" type="checkbox" class="peer hidden" />
 
-            <label for="nav-toogle"
-                class="grid h-10 w-10 cursor-pointer place-items-center rounded-md border border-white md:hidden hover:bg-white/10">
+            <!-- Hamburger icon (label toggles the checkbox) -->
+            <label for="nav-toggle" class="grid h-10 w-10 cursor-pointer place-items-center rounded-md 
+                    border border-white/30 md:hidden hover:bg-white/10">
+                <span class="sr-only">Open main menu</span>
                 <div class="space-y-1.5">
                     <span class="block h-0.5 w-6 bg-white"></span>
                     <span class="block h-0.5 w-6 bg-white"></span>
@@ -27,32 +29,31 @@
                 </div>
             </label>
 
-            <ul class="left-0 top-full hidden w-full flex-col gap-6 bg-[#198754]
-            px-6 pb-6 pt-4
-            peer-checked:flex
-            d:static md:flex md:w-auto md:flex-row md:items-center md:gap-8 md:p-2
-            md:bg-transparent
-            ">
+            <ul class="absolute left-0 top-full hidden w-full flex-col gap-6 bg-[#198754]/95
+               px-6 pb-6 pt-4
+               peer-checked:flex               <!-- :lock: shows when checkbox checked -->
+               md:static md:flex md:w-auto md:flex-row md:items-center md:gap-10
+               md:bg-transparent md:p-0">
                 <li><a href="#" class="block font-medium hover:opacity-90">Home</a></li>
-                <li><a href="#" class="block font-medium hover:opacity-90">About Us</a></li>
+                <li><a href="#" class="block font-medium hover:opacity-90">About Us</a></li>
                 <li><a href="#" class="block font-medium hover:opacity-90">Destination</a></li>
                 <li><a href="#" class="block font-medium hover:opacity-90">Testimonials</a></li>
-                <li><a href="#" class="block font-medium hover:opacity-90">Contact Us</a></li>
-
-                <li>
-                    <a href="#" class="inline-block rounded-md bg-white py-2 px-5 text-sm font-semibold
-                    text-[#000000]">SignUp</a>
-                </li>
-                <li>
-                    <a href="#" class="inline-block rounded-md py-2 px-5 text-sm font-semibold
-                    text-white border border-white transition hover:bg-white hover:text-black">Login</a>
-                </li>
+                <li><a href="#" class="block font-medium hover:opacity-90">Contact Us</a></li>
             </ul>
-
+            <div class="hidden md:flex md:items-center md:gap-4">
+                <a href="#" class="inline-block rounded-md bg-white px-5 py-2 text-sm font-semibold
+                                  text-[#198754] transition hover:bg-gray-100">
+                    SignUp
+                </a>
+                <a href="#" class="inline-block rounded-md border border-white px-5 py-2 text-sm font-semibold
+                                  transition hover:bg-white/10">
+                    Login
+                </a>
+            </div>
         </div>
     </nav>
 
-    <section class="">
+    <section class="relative h-[80vh] overflow-hidden">
         <!-- SLIDE 1 -->
         <input id="slide-1" type="radio" name="hero" class="peer/s1" checked />
         <label for="slide-4" class="hidden peer-checked/s1:block z-30 absolute left-4 top-1/2 -translate-y-1/2
