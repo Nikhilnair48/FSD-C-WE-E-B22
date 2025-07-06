@@ -9,6 +9,7 @@
 </head>
 
 <body>
+    <!-- nav bar -->
     <nav class="fixed inset-x-0 top-0 z-50 w-full bg-[#198754] text-white shadow">
         <div class="mx-auto flex items-center justify-between px-6 py-4 md:px-10 max-w-full lg:max-w-[1600px]">
 
@@ -53,6 +54,7 @@
         </div>
     </nav>
 
+    <!-- image carousel bar -->
     <section class="relative h-[80vh] lg:h-[90vh] overflow-hidden">
         <!-- SLIDE 1 -->
         <input id="slide-1" type="radio" name="hero" class="peer/s1" checked />
@@ -145,14 +147,15 @@
 
         <!-- progress dashes -->
         <div class="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-4 z-20">
-            <label for="slide-1" class="h-1.5 w-10 rounded-full bg-white-250 cursor-pointer"></label>
-            <label for="slide-2" class="h-1.5 w-10 rounded-full bg-white-250 cursor-pointer"></label>
-            <label for="slide-3" class="h-1.5 w-10 rounded-full bg-white-250 cursor-pointer"></label>
-            <label for="slide-4" class="h-1.5 w-10 rounded-full bg-white-250 cursor-pointer"></label>
+            <label for="slide-1" class="h-1.5 w-10 rounded-full bg-white cursor-pointer"></label>
+            <label for="slide-2" class="h-1.5 w-10 rounded-full bg-white cursor-pointer"></label>
+            <label for="slide-3" class="h-1.5 w-10 rounded-full bg-white cursor-pointer"></label>
+            <label for="slide-4" class="h-1.5 w-10 rounded-full bg-white cursor-pointer"></label>
         </div>
 
     </section>
 
+    <!-- about us -->
     <section class="py-16 bg-white mb-20">
         <div class="mx-auto max-w-7xl h-[30vh] px-4 sm:px-6 lg:px-8">
             <!-- Text container -->
@@ -178,6 +181,7 @@
         </div>
     </section>
 
+    <!-- destinations -->
     <section class="py-16 bg-white">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
             <p class="text-sm font-medium text-[#198754]">Destination</p>
@@ -256,31 +260,31 @@
 
     <!-- testimonials section -->
     <section class="relative bg-[url('images/testimonials.jpeg')] bg-cover bg-center
-    h-[80vh] min-h-[400px flex items-center justify-center]">
+    h-[80vh] min-h-[400px] flex items-center justify-center">
         <!-- overlay -->
-        <div class="absolute inset-0 bg-black/10"></div>
+        <div class="absolute inset-0 bg-black/2"></div>
 
         <!-- managing the viewport + track the current testimonial state -->
         <div class="relative w-full max-w-3xl mx-auto overflow-hidden px-4
         bg-[rgba(255, 255, 255, 0.493)] backdrop-blur-sm z-10">
-            <input id="t-1" type="radio" name="testi" class="peer/t1" checked>
-            <input id="t-2" type="radio" name="testi" class="peer/t2">
-            <input id="t-3" type="radio" name="testi" class="peer/t3">
+            <input id="t-1" type="radio" name="testi" class="peer/t1 hidden" checked>
+            <input id="t-2" type="radio" name="testi" class="peer/t2 hidden">
+            <input id="t-3" type="radio" name="testi" class="peer/t3 hidden">
 
             <!-- testimonial 1 arrows -->
-            <label for="t-3" class="hidden peer-checked:t1/block absolute left-3 top-1/2 -translate-y-1/2 z-20 
+            <label for="t-3" class="hidden peer-checked/t1:block absolute left-3 top-1/2 -translate-y-1/2 z-20 
                 cursor-pointer text-4xl font-bold text-gray-700 hover:text-gray-900">‹</label>
-            <label for="t-2" class="hidden peer-checked:t1/block absolute right-3 top-1/2 -translate-y-1/2 z-20 
+            <label for="t-2" class="hidden peer-checked/t1:block absolute right-3 top-1/2 -translate-y-1/2 z-20 
                 cursor-pointer text-4xl font-bold text-gray-700 hover:text-gray-900">›</label>
             <!-- testimonial 2 arrows -->
-            <label for="t-1" class="hidden peer-checked:t2/block absolute left-3 top-1/2 -translate-y-1/2 z-20 
+            <label for="t-1" class="hidden peer-checked/t2:block absolute left-3 top-1/2 -translate-y-1/2 z-20 
                 cursor-pointer text-4xl font-bold text-gray-700 hover:text-gray-900">‹</label>
-            <label for="t-3" class="hidden peer-checked:t2/block absolute right-3 top-1/2 -translate-y-1/2 z-20 
+            <label for="t-3" class="hidden peer-checked/t2:block absolute right-3 top-1/2 -translate-y-1/2 z-20 
                 cursor-pointer text-4xl font-bold text-gray-700 hover:text-gray-900">›</label>
             <!-- testimonial 3 arrows -->
-            <label for="t-2" class="hidden peer-checked:t3/block absolute left-3 top-1/2 -translate-y-1/2 z-20 
+            <label for="t-2" class="hidden peer-checked/t3:block absolute left-3 top-1/2 -translate-y-1/2 z-20 
                 cursor-pointer text-4xl font-bold text-gray-700 hover:text-gray-900">‹</label>
-            <label for="t-3" class="hidden peer-checked:t3/block absolute right-3 top-1/2 -translate-y-1/2 z-20 
+            <label for="t-1" class="hidden peer-checked/t3:block absolute right-3 top-1/2 -translate-y-1/2 z-20 
                 cursor-pointer text-4xl font-bold text-gray-700 hover:text-gray-900">›</label>
 
             <div class="flex transition-transform duration-700 ease-in-out
@@ -288,7 +292,7 @@
             peer-checked/t2:-translate-x-[100%]
             peer-checked/t3:-translate-x-[200%]">
                 <!-- testimonial 1 -->
-                <div class="shrink-0  w-full py=16 px-6 flex flex-col items-center text-center">
+                <div class="shrink-0  w-full py-16 px-6 flex flex-col items-center text-center">
                     <p class="mb-4 text-gray-800">Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus ad
                         sit illo itaque, maiores
                         dolores voluptates exercitationem! Molestias illo officiis omnis. Ipsa sed doloribus laboriosam
@@ -297,7 +301,7 @@
                     <span class="text-sm text-color-gray-600">Client</span>
                 </div>
                 <!-- testimonial 2 -->
-                <div class="shrink-0  w-full py=16 px-6 flex flex-col items-center text-center">
+                <div class="shrink-0  w-full py-16 px-6 flex flex-col items-center text-center">
                     <p class="mb-4 text-gray-800">Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus ad
                         sit illo itaque, maiores
                         dolores voluptates exercitationem! Molestias illo officiis omnis. Ipsa sed doloribus laboriosam
@@ -306,7 +310,7 @@
                     <span class="text-sm text-color-gray-600">Traveller</span>
                 </div>
                 <!-- testimonial 3 -->
-                <div class="shrink-0  w-full py=16 px-6 flex flex-col items-center text-center">
+                <div class="shrink-0  w-full py-16 px-6 flex flex-col items-center text-center">
                     <p class="mb-4 text-gray-800">Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus ad
                         sit illo itaque, maiores
                         dolores voluptates exercitationem! Molestias illo officiis omnis. Ipsa sed doloribus laboriosam
@@ -319,7 +323,7 @@
             <!-- progress dots -->
             <div class="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1
             [&>label]:bg-gray-200 
-            [&>label]:hoven:bg-gray-400
+            [&>label]:hover:bg-gray-400
             peer-checked/t1:[&>label:nth-child(1):bg-gray-600]
             peer-checked/t2:[&>label:nth-child(2):bg-gray-600]
             peer-checked/t3:[&>label:nth-child(3):bg-gray-600]
@@ -330,6 +334,46 @@
             </div>
         </div>
     </section>
+
+    <!-- subcribe to newsletter -->
+    <section class="relative bg-[url('images/newssection-bg.jpg')] h-[60vh] md:75vh ">
+        <!-- overlay div -->
+        <div class="absolute inset-0 bg-black/10 z-0"></div>
+
+        <div class="relative max-w-5xl md:max-w-7xl px-64 py-16 lg:py-32 z-10 
+        grid grid-cols-1 md:grid-cols-2 items-center gap-12">
+            <form class="max-w-md">
+                <!-- font size, font weight and font-color -->
+                <h2 class="text-3xl font-semibold text-black-700 sm:text-2xl">Subcribe to Our News-Letter</h2>
+
+                <!-- email -->
+                <div>
+                    <label for="newsletter-email" class="block text-sm font-medium text-black-700">Email Address</label>
+                    <input class="w-full rounded-md border border-gray-300 px-4 py-2
+                    focus:ouline focus:outline-sky-500" type="email" id="newsletter-email" required />
+                    <p class="mt-1 text-sm text-black-600">We'll never share your email with anyone else</p>
+                </div>
+
+                <!-- terms -->
+                <label for="newsletter-terms" class="flex items-start gap-2 mt-4">
+                    <input type="checkbox" id="newsletter-terms"
+                        class="h-4 w-4 rounded border-gray-300 focus:ouline focus:outline-sky-500" required />
+                    <span class="text-sm text-gray-800">Agree to all Terms & Services</span>
+                </label>
+
+                <button type="submit"
+                    class="mt-4 inline-block rounded-md bg-[#198754] px-4 py-2 font-semibold text-white hover:bg-[#212529]">
+                    Subscribe
+                </button>
+
+            </form>
+        </div>
+        <div class="absolute inset-x-0 bottom-0 bg-[#198754] py-6">
+            <p class="text-center text-white text-md">ThIs Website is Created For Educational Purposes Not For Any
+                Commercial Use @2023</p>
+        </div>
+    </section>
+
 </body>
 
 </html>
