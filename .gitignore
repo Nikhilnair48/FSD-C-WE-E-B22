@@ -1,7 +1,9 @@
 node_modules/
 
 .DS_Store
+**/.DS_Store
 
 **/my-reference/
+**/my-references/
 
 **/node_modules/
