@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import UserInfo from "./UserInfo";
 
 
@@ -9,11 +9,13 @@ const teamMembers = [
 ];
 
 const Users = () => {
+    const [users, setUsers] = useState(teamMembers);
+
     return (
         <div className="container">
             <h1>Our Team</h1>
             <div className="user-list">
-                {teamMembers.map(member => {
+                {users.map(member => {
                     return (
                         <UserInfo key={member.id} user={member} />
                     )
