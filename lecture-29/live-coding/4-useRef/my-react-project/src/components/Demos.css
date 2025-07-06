@@ -1,0 +1,55 @@
+.use-ref-demo {
+    font-family: sans-serif;
+    border: 2px solid #6c5ce7;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px;
+    background-color: #f5f3ff;
+    max-width: 500px;
+}
+
+.use-ref-demo h2 {
+    margin-top: 0;
+    color: #6c5ce7;
+    border-bottom: 2px solid #a29bfe;
+    padding-bottom: 10px;
+}
+
+.use-ref-demo .controls {
+    margin-top: 15px;
+    display: flex;
+    gap: 10px;
+}
+
+.use-ref-demo button {
+    background-color: #a29bfe;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: background-color 0.2s;
+}
+
+.use-ref-demo button:hover {
+    background-color: #8176ee;
+}
+
+.use-ref-demo video {
+    max-width: 100%;
+    border-radius: 8px;
+}
+
+.use-ref-demo .value-display {
+    margin-top: 20px;
+    background-color: black;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.use-ref-demo .value-display h3 {
+    margin: 5px 0;
+}

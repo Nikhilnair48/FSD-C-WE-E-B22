@@ -1,0 +1,64 @@
+.use-reducer-demo {
+    font-family: sans-serif;
+    border: 2px solid #0984e3;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px;
+    background-color: #343434;
+    max-width: 500px;
+}
+
+.use-reducer-demo h2 {
+    margin-top: 0;
+    color: #0984e3;
+    border-bottom: 2px solid #74b9ff;
+    padding-bottom: 10px;
+}
+
+.todo-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: black;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    font-size: 1.1rem;
+}
+
+.todo-item span {
+    cursor: pointer;
+    flex-grow: 1;
+}
+
+.todo-item input[type="text"] {
+    flex-grow: 1;
+    font-size: 1.1rem;
+    padding: 5px;
+    border: 1px solid #74b9ff;
+    border-radius: 4px;
+}
+
+.todo-item button {
+    background-color: #dfe6e9;
+    color: #2d3436;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: bold;
+    transition: background-color 0.2s;
+    margin-left: 15px;
+}
+
+.todo-item button:hover {
+    background-color: #b2bec3;
+}
+
+.use-reducer-demo p {
+    margin-top: 15px;
+    color: #636e72;
+    font-style: italic;
+    font-size: 0.9rem;
+}
