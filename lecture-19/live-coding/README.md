@@ -9,11 +9,14 @@ What is Tic Tac Toe?
 
 ## Process
 
+### High level approach
 - Get a design - come up with a design
 - Identify the sections to be built
 - Gather your assets (images) & resources (colors, etc)
 - Set up our code (html, css, js)
 
+
+### How do we break down the requirement?
 To build a tic-tac-toe, functionally we need:
 - 3x3 grid
 - manage two players
@@ -66,4 +69,4 @@ We'll be building Tic Tac Toe with a cosmic theme. Colors required:
 * **Restart Button (Hover Background):** Gradient `from-purple-700 to-pink-700`
 * **Restart Button Focus Ring:** `focus:ring-pink-500/50`
 
-
+# References
