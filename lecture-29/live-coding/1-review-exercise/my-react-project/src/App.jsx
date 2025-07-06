@@ -1,6 +1,5 @@
 import "./App.css"
-// import ReviewChallenge from "./components/starting/ReviewChallenge"
-import ReviewChallenge from "./components/complete/ReviewChallenge"
+import ReviewChallenge from "./components/ReviewChallenge"
 
 function App() {
 
