@@ -48,7 +48,6 @@ body {
     border: 1px solid #ccd0d5;
     margin-bottom: 24px;
     box-sizing: border-box;
-    /* Ensures padding doesn't affect width */
     transition: border-color 0.2s, box-shadow 0.2s;
 }
 
@@ -56,34 +55,6 @@ body {
     outline: none;
     border-color: #1877f2;
     box-shadow: 0 0 0 2px rgba(24, 119, 242, 0.2);
-}
-
-/* Container for all the control buttons */
-.controls {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    /* Space between buttons */
-    justify-content: center;
-    margin-bottom: 24px;
-    padding-bottom: 24px;
-    border-bottom: 1px solid #dddfe2;
-}
-
-.controls button {
-    background-color: #e4e6eb;
-    color: #1c1e21;
-    border: none;
-    border-radius: 6px;
-    padding: 8px 14px;
-    font-size: 0.9rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background-color 0.2s;
-}
-
-.controls button:hover {
-    background-color: #d8dadf;
 }
 
 /* The main container for the list of songs */
@@ -94,7 +65,7 @@ body {
 }
 
 /* Individual list item for each song */
-.song-list li {
+.song-item {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -103,13 +74,18 @@ body {
     transition: background-color 0.2s;
 }
 
-.song-list li:last-child {
+.song-item:last-child {
     border-bottom: none;
 }
 
-.song-list li:hover {
+.song-item:hover {
     background-color: #f7f8fa;
     border-radius: 6px;
+}
+
+.song-details {
+    display: flex;
+    flex-direction: column;
 }
 
 /* Styling for the song title */
@@ -122,4 +98,22 @@ body {
 .song-artist {
     color: #606770;
     font-size: 0.9rem;
+}
+
+/* Styling for the new 'Remove' button */
+.remove-btn {
+    background-color: transparent;
+    color: #c93b3b;
+    border: 1px solid #f0f2f5;
+    border-radius: 6px;
+    padding: 6px 12px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.remove-btn:hover {
+    background-color: #fce8e8;
+    border-color: #e8a0a0;
 }
