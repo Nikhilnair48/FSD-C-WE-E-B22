@@ -2,7 +2,7 @@
 
 Class objectives:
 - Github update
-- Share survey
+- [Share survey](https://forms.gle/T26JfiCYyZq6do8m7)
 - Review Exercise
 - Lecture 26 quiz (cover any unknown concepts, eg: controlled vs uncontrolled components)
 - useCallback & use memo - an inefficient color picker & optimize it
