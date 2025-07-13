@@ -49,12 +49,15 @@ Filtering or sorting a huge list of users, and you want to avoid repeating the c
 useReducer - alternative to useState; helps you manage more complex state logic in a structured manner
 
 
-## Useful VS Extensions
+## Useful Extensions
+
+### Browser Extensions
+- [React Developer Tools](https://react.dev/learn/react-developer-tools)
+- [React FLow](https://reactflow.dev/): I haven't been able to audit this
 
 
 ## Tools for visualization - to help build a mental model
-
+- TBD
 
 ## References
-
-https://runjs.app/play
+- https://runjs.app/play
