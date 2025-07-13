@@ -51,7 +51,6 @@ useReducer - alternative to useState; helps you manage more complex state logic 
 
 ## Useful Extensions
 
-### Browser Extensions
 - [React Developer Tools](https://react.dev/learn/react-developer-tools)
 - [React FLow](https://reactflow.dev/): I haven't been able to audit this
 
@@ -60,4 +59,5 @@ useReducer - alternative to useState; helps you manage more complex state logic 
 - TBD
 
 ## References
-- https://runjs.app/play
+- https://runjs.app/play - to React code online
+- https://codesandbox.io/ - to run code
