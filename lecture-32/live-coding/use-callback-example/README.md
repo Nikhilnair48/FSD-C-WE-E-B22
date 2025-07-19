@@ -1,12 +1,43 @@
-# React + Vite
+# useCallback Demo
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple user directory with two functionalities: search and user selection
 
-Currently, two official plugins are available:
+## Components
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+* App.jsx: The main component that holds the global state
 
-## Expanding the ESLint configuration
+    * search state: filters the user list
+    * selectedUser: displays details for the clicked user
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+* UserList.jsx (memoized)
+
+    * A list of users filtered based on search input.
+    * Receives a filterFn prop and a onUserClick handler from the parent.
+
+* UserDetails.jsx: A simple panel that shows which user was selected
+
+# Interaction flow
+
+* The user types into a search box: UserList filters accordingly
+
+* The user clicks on a name in the list: UserDetails updates.
+
+* Without useCallback: UserList re-renders unnecessarily on every selection
+
+* With useCallback: UserList only re-renders when the search input changes: not when unrelated state (selectedUser) changes.
+
+# How to run this demo
+
+1. Run the app (npm run dev)
+
+2. Open the URL in the browser (http://localhost:5173/)
+
+3. Open DevTools in the browser. Select the Console tab
+
+4. Type something in search — UserList re-renders
+
+5. Click a user without changing search:
+
+    i. With useCallback: UserList does NOT re-render
+
+    ii. Without useCallback: UserList re-renders 

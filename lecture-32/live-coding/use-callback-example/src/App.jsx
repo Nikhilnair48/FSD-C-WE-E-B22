@@ -2,51 +2,47 @@
 import { useState } from 'react'
 import './App.css'
 import { useCallback } from 'react';
-import { useEffect } from 'react';
+import UserDetails from './UserDetails';
+import UserList from './UserList';
 
 // Child component UserList -> receive the search Function
 // Component will have the list of users & it will render them
 
-const UserList = ({ filterFn }) => {
-  console.log("Userlist rendered");
-  const users = ["Aswathi", "Saravanan", "Kashish"];
-  const filteredUsers = users.filter(filterFn);
-
-  return (
-    <ul>
-      {filteredUsers.map(user => (
-        <li key={user}>{user}</li>
-      ))}
-    </ul>
-  )
-
-}
+const USERS = ["Aswathi", "Saravanan", "Kashish", "Balaji A", "Vimalan"];
 
 function App() {
-  // search keywords in state
-  const [search, setSearch] = useState("");
-  const [count, setCount] = useState(0);
+  const [search, setSearch] = useState('');
+  const [selectedUser, setSelectedUser] = useState(null);
 
-  useEffect(() => {
-    // component gets mounted
-    // allows us to init the state
-  }, [search])
+  // Try toggling this between `useCallback` and plain function
 
-  // search function - case insensitive search
-  const filterFn = useCallback(
-    (name) => name.toLowerCase().includes(search.toLowerCase()),
-    [search]);
+  // --- With useCallback ---
+  // const filterFn = useCallback(
+  //   (name) => name.toLowerCase().includes(search.toLowerCase()),
+  //   [search]
+  // );
 
-  // search input field
+  // --- Without useCallback ---
+  const filterFn = (name) => name.toLowerCase().includes(search.toLowerCase());
+
   return (
-    <div>
+    <div style={{ fontFamily: 'Arial', padding: '20px' }}>
+      <h2>User Directory</h2>
+
       <input
+        type="text"
         value={search}
-        onChange={(e) => setSearch(e.target.value) }
+        placeholder="Search users..."
+        onChange={(e) => setSearch(e.target.value)}
+        style={{ padding: '8px', fontSize: '16px', width: '300px' }}
       />
-      <UserList filterFn={filterFn} />
+
+      <div style={{ display: 'flex', gap: '40px', marginTop: '20px' }}>
+        <UserList users={USERS} filterFn={filterFn} onUserClick={setSelectedUser} />
+        <UserDetails user={selectedUser} />
+      </div>
     </div>
-  )
+  );
 }
 
 export default App
