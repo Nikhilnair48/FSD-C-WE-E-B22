@@ -1,3 +1,5 @@
+Reference: Review lecture 27 for more on class components
+
 # Question: is class component necessary to remember,and can you explain that life cycle of of the same?
 
 - Default way to define components in React when it was initially created
