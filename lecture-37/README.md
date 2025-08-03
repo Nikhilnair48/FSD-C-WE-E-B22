@@ -72,3 +72,54 @@ When the generator functions' `next()` method is called again, the function resu
     sagaMiddleware.run(rootSaga)
 
 ```
+
+## What is [Redux Reselect](https://github.com/reduxjs/reselect)?
+
+Docs: https://redux.js.org/usage/deriving-data-selectors
+
+### Why do we need "selectors" at all?
+
+Problems
+- Component re-renders too often
+    - Symptom: every `useSelector` sees a new object/array every time the state changes, even if the piece that our component cares about did not change
+    - Solution with selector: returns a stable (references-equal) values so React doesn't re-render the component
+- Expensive computations
+    - Symptom: a heavy calculatino (eg: you're sorting 50000 rows) runs on every re-render
+    - Solution with selector: memoize the result and only recompute when the inputs change
+
+
+A selector is simply a function `(state) => seleceOfData`
+
+## What is Reselect?
+
+A library that allows us to compose memoized selectors so Redux only computes derived data when its input selector' outputs change (by ===)
+
+## What does the selector look like if using Reselect?
+
+```js
+    // input selectors - fast, no memoization required
+    const selectCards = (state) => state.flashcards.cards;
+    const selectShowSolved = (state) => state.flashcards.showSolved;
+
+    creteSelector(
+        // array of input selectors
+        [selectCards, selectShowSolved],
+        // result function
+        (cards, showSolved) => {
+
+        }
+    )
+
+```
+
+
+## RTK Query - data fetching and caching with little boilerplate code
+
+### What does it solve?
+- When repeatedly writing fetch code with loading states, caching (cache invalidation - when do I clear my cache?), RTK Query allows us to handoff these layer to the library
+
+## How does it do it?
+
+API slices - generates hooks using createApi(...) with relevant tags for invalidation, auto polling
+
+## Final changes to RTK query code

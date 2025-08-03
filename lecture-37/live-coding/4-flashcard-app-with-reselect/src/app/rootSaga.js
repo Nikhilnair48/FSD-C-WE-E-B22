@@ -3,7 +3,6 @@ import { fetchRequest, fetchFailure, fetchSuccess } from "../reducers/flashcardR
 
 function* handleFetch() {
     try {
-
         const response = yield call(fetch, "https://opentdb.com/api.php?amount=5&type=multiple");
         // const json = await response.json();
         const json = yield call([response, response.json])
