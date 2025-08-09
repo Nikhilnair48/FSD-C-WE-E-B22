@@ -1,0 +1,100 @@
+@import "tailwindcss";
+
+/* Components (base utilities only in @apply) */
+@layer components {
+  .btn {
+    @apply inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm font-medium text-slate-800 shadow transition;
+  }
+
+  .btn:hover {
+    @apply bg-slate-50;
+  }
+
+  .dark .btn {
+    @apply border-slate-700 bg-slate-800 text-slate-100;
+  }
+
+  .dark .btn:hover {
+    @apply bg-slate-700;
+  }
+
+  .btn-primary {
+    @apply border-transparent bg-blue-600 text-white;
+  }
+
+  .btn-primary:hover {
+    @apply bg-blue-700;
+  }
+
+  .dark .btn-primary {
+    @apply bg-blue-500;
+  }
+
+  .dark .btn-primary:hover {
+    @apply bg-blue-600;
+  }
+
+  .btn-ghost {
+    @apply border-slate-200 bg-white text-slate-700;
+  }
+
+  .btn-ghost:hover {
+    @apply bg-slate-50;
+  }
+
+  .dark .btn-ghost {
+    @apply border-slate-700 bg-slate-800 text-slate-100;
+  }
+
+  .dark .btn-ghost:hover {
+    @apply bg-slate-700;
+  }
+
+  .card {
+    @apply rounded-2xl border border-slate-200 bg-white p-4 shadow;
+  }
+
+  .dark .card {
+    @apply border-slate-800 bg-slate-800;
+  }
+
+  .input {
+    @apply w-full rounded-xl border border-slate-300 bg-white px-3 py-2 text-sm outline-none ring-0;
+  }
+
+  .input:focus {
+    @apply border-blue-500 ring-2 ring-blue-200;
+  }
+
+  .dark .input {
+    @apply border-slate-700 bg-slate-900;
+  }
+
+  .dark .input:focus {
+    @apply ring-blue-500/20;
+  }
+
+  .badge {
+    @apply inline-flex items-center rounded-full border border-slate-200 bg-slate-100 px-2 py-0.5 text-[11px] font-medium text-slate-700;
+  }
+
+  .dark .badge {
+    @apply border-slate-700 bg-slate-800 text-slate-300;
+  }
+}
+
+/* Small extras you can use in JSX (no @apply involved) */
+@layer utilities {
+  .shadow-soft {
+    box-shadow: 0 2px 6px rgba(3, 7, 18, .06), 0 12px 24px rgba(3, 7, 18, .06);
+  }
+
+  .glass {
+    background-color: rgba(255, 255, 255, .9);
+    backdrop-filter: blur(8px);
+  }
+
+  .dark .glass {
+    background-color: rgba(15, 23, 42, .8);
+  }
+}
