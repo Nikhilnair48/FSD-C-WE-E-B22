@@ -1,0 +1,3 @@
+{ "_id": 1, "userId": 1, "item": "Book" }
+{ "_id": 2, "userId": 2, "item": "Laptop" }
+{ "_id": 3, "userId": 2, "item": "Pen" }
